@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://mohammadmahdinaeiji.github.io/portfolio/sitemap.xml
+sitemap: https://mohammadmahdinaeiji.github.io/portfolio/sitemap-index.xml
+
