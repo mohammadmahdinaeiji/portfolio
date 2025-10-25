@@ -715,7 +715,7 @@
     </nav>
     <section class="hero-section">
         <div class="hero-avatar">
-            <img src="images/me.jpg" alt="Mohammadmahdi Naeiji">
+            <img src="images/mohammadmahdi_naeiji.jpg" alt="Mohammadmahdi Naeiji">
         </div>
         <div class="hero-title">
             <h1 data-en="Mohammadmahdi Naeiji" data-fa="محمدمهدی نائیجی">Mohammadmahdi Naeiji</h1>
@@ -730,29 +730,29 @@
     </section>
     <div class="gallery" id="gallery">
         <div class="project-section" id="about">
-            <div class="frame in-view" id="page2"><img src="images/page_2.jpg" alt="page 2: About Me"></div>
-            <div class="frame in-view" id="page3"><img src="images/page_3.jpg" alt="page 3: Biography"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji2"><img src="images/mohammadmahdi_naeiji_2.jpg" alt="mohammadmahdi_naeiji 2: About Me"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji3"><img src="images/mohammadmahdi_naeiji_3.jpg" alt="mohammadmahdi_naeiji 3: Biography"></div>
         </div>
         <div class="project-section" id="projects">
-            <div class="frame in-view" id="page4"><img src="images/page_4.jpg" alt="page 4: Project Overview"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji4"><img src="images/mohammadmahdi_naeiji_4.jpg" alt="mohammadmahdi_naeiji 4: Project Overview"></div>
         </div>
         <div class="project-section" id="caravan">
-            <div class="frame in-view" id="page5"><img src="images/page_5.jpg" alt="page 5: Caravan Project"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji5"><img src="images/mohammadmahdi_naeiji_5.jpg" alt="mohammadmahdi_naeiji 5: Caravan Project"></div>
         </div>
         <div class="project-section" id="hoveid">
-            <div class="frame" id="page16"><img src="images/page_16.jpg" alt="page 16: Hoveid Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji16"><img src="images/mohammadmahdi_naeiji_16.jpg" alt="mohammadmahdi_naeiji 16: Hoveid Project"></div>
         </div>
         <div class="project-section" id="aftabe">
-            <div class="frame" id="page25"><img src="images/page_25.jpg" alt="page 25: Aftabe Dozd Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji25"><img src="images/mohammadmahdi_naeiji_25.jpg" alt="mohammadmahdi_naeiji 25: Aftabe Dozd Project"></div>
         </div>
         <div class="project-section" id="ai_i">
-            <div class="frame" id="page29"><img src="images/page_29.jpg" alt="page 29: AI & I Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji29"><img src="images/mohammadmahdi_naeiji_29.jpg" alt="mohammadmahdi_naeiji 29: AI & I Project"></div>
         </div>
         <div class="project-section" id="book">
-            <div class="frame" id="page37"><img src="images/page_37.jpg" alt="page 37: Book Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji37"><img src="images/mohammadmahdi_naeiji_37.jpg" alt="mohammadmahdi_naeiji 37: Book Project"></div>
         </div>
         <div class="project-section" id="typography">
-            <div class="frame" id="page42"><img src="images/page_42.jpg" alt="page 42: Typography Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji42"><img src="images/mohammadmahdi_naeiji_42.jpg" alt="mohammadmahdi_naeiji 42: Typography Project"></div>
         </div>
     </div>
     <div class="contact-bar" id="contactBar">
@@ -775,7 +775,7 @@
     <script>
         // --- Gallery Creation (Inject Missing Frames) ---
         const totalFrames = 46;
-        const imgPrefix = "images/page_"; // تغییر به حروف کوچک
+        const imgPrefix = "images/mohammadmahdi_naeiji_"; // تغییر به حروف کوچک
         const ext = "jpg";
 
         // Helper to find a section by ID
@@ -803,10 +803,10 @@
                 for (let i = sectionInfo.start; i <= sectionInfo.end; i++) {
                     const frame = document.createElement("div");
                     frame.className = "frame";
-                    frame.id = `page${i}`; 
+                    frame.id = `mohammadmahdi_naeiji${i}`; 
                     const img = document.createElement("img");
                     img.src = `${imgPrefix}${i}.${ext}`;
-                    img.alt = `page ${i}`; 
+                    img.alt = `mohammadmahdi_naeiji ${i}`; 
                     frame.appendChild(img);
                     sectionElement.appendChild(frame);
                 }
@@ -914,7 +914,7 @@
         // --- Frame Scroll Effect (منطق اصلاح‌شده برای حفظ فریم‌های اولیه) ---
         const allFrames = document.querySelectorAll(".frame");
         // لیست فریم‌هایی که باید از ابتدا باز باشند و کلاس in-view را در HTML دریافت کرده‌اند
-        const initialOpenFrames = ["page2", "page3", "page4", "page5"];
+        const initialOpenFrames = ["mohammadmahdi_naeiji2", "mohammadmahdi_naeiji3", "mohammadmahdi_naeiji4", "mohammadmahdi_naeiji5"];
 
         function checkInView() {
             const windowHeight = window.innerHeight;
@@ -964,3 +964,4 @@
     </script>
 </body>
 </html>
+
