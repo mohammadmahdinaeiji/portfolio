@@ -735,6 +735,17 @@
             opacity: 0.7;
             transition: color 0.7s ease;
         }
+        /* --- Lazy Loading + Blur Transition --- */
+.frame img.lazy {
+  filter: blur(20px);
+  opacity: 0;
+  transition: filter 0.7s ease, opacity 1.2s ease;
+}
+
+.frame img.loaded {
+  filter: blur(0);
+  opacity: 1;
+}
     </style>
 </head>
 <body class="dark">
@@ -1123,9 +1134,39 @@ I’m Mahdi, a 19-year-old graphic designer specializing in digital design, illu
         });
         
     });
+    // --- Lazy Loading & Blur Transition for mohammadmahdi_naeiji_portfolio_ images ---
+document.addEventListener("DOMContentLoaded", () => {
+  const lazyImages = document.querySelectorAll('img[src*="mohammadmahdi_naeiji_portfolio_"]');
+
+  lazyImages.forEach(img => {
+    const src = img.getAttribute("src");
+    img.removeAttribute("src"); // remove direct src to defer loading
+    img.dataset.src = src;
+    img.classList.add("lazy");
+  });
+
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.classList.add("loaded");
+          img.classList.remove("lazy");
+        };
+        observer.unobserve(img);
+      }
+    });
+  }, { rootMargin: "100px 0px" });
+
+  lazyImages.forEach(img => {
+    imageObserver.observe(img);
+  });
+});
 </script>
 </body>
 </html>
+
 
 
 
