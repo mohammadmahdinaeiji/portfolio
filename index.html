@@ -1118,72 +1118,67 @@ I’m Mahdi, a 19-year-old graphic designer specializing in digital design, illu
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const overlay = document.getElementById('introOverlay');
+  document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navControls = document.getElementById('navControls');
 
-        // تابع برای شروع انیمیشن و پنهان‌سازی
-        function hideOverlay() {
-            // اضافه کردن کلاس‌های پنهان‌سازی و انیمیشن
-            overlay.classList.add('slide-up'); 
-            overlay.classList.add('hidden'); 
-
-            // (اختیاری) اگر می‌خواهید محتوای اصلی را پس از محو شدن نمایش دهید:
-            // document.body.style.overflow = 'visible';
-        }
-
-        // 1. زمان انتظار (مثلاً 1.5 ثانیه)
-        setTimeout(() => {
-            hideOverlay();
-        }, 1500); // 1.5 ثانیه نمایش می‌دهد
-        
-        // 2. مطمئن شوید که پس از اتمام انیمیشن (0.7 ثانیه) المان حذف یا کاملاً پنهان شود.
-        overlay.addEventListener('transitionend', function() {
-            if (overlay.classList.contains('hidden')) {
-                // اطمینان از حذف المان پس از اتمام انیمیشن برای کلیک نشدن تصادفی روی آن
-                overlay.style.display = 'none';
-            }
-        });
-        
+    // 🌓 سوییچ تم روشن/تاریک
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-theme');
+      localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
     });
- // --- Lazy Loading with Preload Buffer & Blur Transition ---
-document.addEventListener("DOMContentLoaded", () => {
-  const lazyImages = document.querySelectorAll('img[src*="mohammadmahdi_naeiji_portfolio_"]');
 
-  // تمام عکس‌ها lazy می‌شن تا بعداً srcشون رو زمانی که نزدیک دید هست لود کنیم
-  lazyImages.forEach(img => {
-    const src = img.getAttribute("src");
-    img.removeAttribute("src"); 
-    img.dataset.src = src;
-    img.classList.add("lazy");
-  });
+    // بازیابی تم ذخیره‌شده
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-theme');
+    }
 
-  // فاصله پیش‌لود: مقدار مثبت یعنی چند صد پیکسل قبل از دید شروع به لود کند
-  // rootMargin بالا/پایین زیاد باعث می‌شه عکس‌ها زودتر لود بشن
-  const preloadObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
+    // 📱 باز و بسته شدن منوی موبایل
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+      navControls.classList.toggle('open');
+    });
 
-        // لود تصویر اصلی
-        img.src = img.dataset.src;
-        img.onload = () => {
-          img.classList.add("loaded");
-          img.classList.remove("lazy");
-        };
-
-        // حذف از observer پس از لود
-        observer.unobserve(img);
+    // کلیک بیرون از منو → بستن منو
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        navControls.classList.remove('open');
       }
     });
-  }, {
-    rootMargin: "800px 0px 800px 0px" // 🔥 یعنی تا 800px بالا و پایین‌تر از دید کاربر رو هم preload کن
-  });
 
-  lazyImages.forEach(img => preloadObserver.observe(img));
-});
+    // دکمه "بازگشت به بالا"
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Lazy loading تصاویر با افکت blur
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.onload = () => img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+    lazyImages.forEach(img => imageObserver.observe(img));
+  });
 </script>
 </body>
 </html>
+
 
 
 
