@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- صفحه اصلی -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- بخش About -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#about</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- بخش Projects -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#projects</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- بخش Caravan Brand -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#caravan</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- بخش Hoveid Brand -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#hoveid</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- بخش Aftabe Dozd Board Game -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#aftabe</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- بخش AI & I -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#ai_i</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- بخش Book Cover & Layout -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#book</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- بخش Typography -->
+  <url>
+    <loc>https://mohammadmahdinaeiji.github.io/portfolio/#typography</loc>
+    <lastmod>2025-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
