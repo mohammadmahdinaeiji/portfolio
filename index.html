@@ -45,6 +45,10 @@
     <link rel="canonical" href="[Your-Website-URL]">
 <link rel="icon" type="image/png" sizes="24x24" href="assets/favicon-24x24.png">
 <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+<!-- Preload صفحات 1 تا 3 -->
+<link rel="preload" as="image" href="images/mohammadmahdi_naeiji_portfolio_2.jpg">
+<link rel="preload" as="image" href="images/mohammadmahdi_naeiji_portfolio_3.jpg">
+<link rel="preload" as="image" href="images/mohammadmahdi_naeiji_portfolio_4.jpg">
 
 <link rel="preload" href="assets/favicon-24x24.png" as="image">
 <link rel="preload" href="assets/favicon.ico" as="image">
@@ -781,30 +785,55 @@ I’m Mahdi, a 19-year-old graphic designer specializing in digital design, illu
     </section>
     <div class="gallery" id="gallery">
         <div class="project-section" id="about">
-            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio2"><img src="images/mohammadmahdi_naeiji_portfolio_2.jpg" alt="mohammadmahdi_naeiji_portfolio 2: About Me"></div>
-            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio3"><img src="images/mohammadmahdi_naeiji_portfolio_3.jpg" alt="mohammadmahdi_naeiji_portfolio 3: Biography"></div>
-        </div>
-        <div class="project-section" id="projects">
-            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio4"><img src="images/mohammadmahdi_naeiji_portfolio_4.jpg" alt="mohammadmahdi_naeiji_portfolio 4: Project Overview"></div>
-        </div>
-        <div class="project-section" id="caravan">
-            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio5"><img src="images/mohammadmahdi_naeiji_portfolio_5.jpg" alt="mohammadmahdi_naeiji_portfolio 5: Caravan Project"></div>
-        </div>
-        <div class="project-section" id="hoveid">
-            <div class="frame" id="mohammadmahdi_naeiji_portfolio16"><img src="images/mohammadmahdi_naeiji_portfolio_16.jpg" alt="mohammadmahdi_naeiji_portfolio 16: Hoveid Project"></div>
-        </div>
-        <div class="project-section" id="aftabe">
-            <div class="frame" id="mohammadmahdi_naeiji_portfolio25"><img src="images/mohammadmahdi_naeiji_portfolio_25.jpg" alt="mohammadmahdi_naeiji_portfolio 25: Aftabe Dozd Project"></div>
-        </div>
-        <div class="project-section" id="ai_i">
-            <div class="frame" id="mohammadmahdi_naeiji_portfolio29"><img src="images/mohammadmahdi_naeiji_portfolio_29.jpg" alt="mohammadmahdi_naeiji_portfolio 29: AI & I Project"></div>
-        </div>
-        <div class="project-section" id="book">
-            <div class="frame" id="mohammadmahdi_naeiji_portfolio37"><img src="images/mohammadmahdi_naeiji_portfolio_37.jpg" alt="mohammadmahdi_naeiji_portfolio 37: Book Project"></div>
-        </div>
-        <div class="project-section" id="typography">
-            <div class="frame" id="mohammadmahdi_naeiji_portfolio42"><img src="images/mohammadmahdi_naeiji_portfolio_42.jpg" alt="mohammadmahdi_naeiji_portfolio 42: Typography Project"></div>
-        </div>
+         <div class="project-section" id="projects"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="4"
+     data-end="5"
+     data-alt="Project Overview">
+</div>
+
+<div class="project-section" id="caravan"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="6"
+     data-end="15"
+     data-alt="Caravan Project">
+</div>
+
+<div class="project-section" id="hoveid"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="16"
+     data-end="24"
+     data-alt="Hoveid Project">
+</div>
+
+<div class="project-section" id="aftabe"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="25"
+     data-end="28"
+     data-alt="Aftabe Dozd Project">
+</div>
+
+<div class="project-section" id="ai_i"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="29"
+     data-end="36"
+     data-alt="AI & I Project">
+</div>
+
+<div class="project-section" id="book"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="37"
+     data-end="41"
+     data-alt="Book Project">
+</div>
+
+<div class="project-section" id="typography"
+     data-prefix="mohammadmahdi_naeiji_portfolio_"
+     data-start="42"
+     data-end="46"
+     data-alt="Typography Project">
+</div>
+
     </div>
     <div class="contact-bar" id="contactBar">
         <span class="contact-bar-label" data-en="Contact" data-fa="تماس">Contact</span>
@@ -1124,8 +1153,31 @@ I’m Mahdi, a 19-year-old graphic designer specializing in digital design, illu
         
     });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.project-section').forEach(section => {
+    const prefix = section.dataset.prefix;
+    const start = parseInt(section.dataset.start);
+    const end = parseInt(section.dataset.end);
+    const alt = section.dataset.alt;
+
+    for (let i = start; i <= end; i++) {
+      const frame = document.createElement('div');
+      frame.className = 'frame';
+      frame.innerHTML = `
+        <img src="images/${prefix}${i}.jpg"
+             alt="${prefix}${i}: ${alt}"
+             loading="lazy">
+      `;
+      section.appendChild(frame);
+    }
+  });
+});
+</script>
+
 </body>
 </html>
+
 
 
 
