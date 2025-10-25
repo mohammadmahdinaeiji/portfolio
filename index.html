@@ -730,37 +730,37 @@
     </section>
     <div class="gallery" id="gallery">
         <div class="project-section" id="about">
-            <div class="frame in-view" id="mohammadmahdi_naeiji2"><img src="images/mohammadmahdi_naeiji_2.jpg" alt="mohammadmahdi_naeiji 2: About Me"></div>
-            <div class="frame in-view" id="mohammadmahdi_naeiji3"><img src="images/mohammadmahdi_naeiji_3.jpg" alt="mohammadmahdi_naeiji 3: Biography"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio2"><img src="images/mohammadmahdi_naeiji_portfolio_2.jpg" alt="mohammadmahdi_naeiji_portfolio 2: About Me"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio3"><img src="images/mohammadmahdi_naeiji_portfolio_3.jpg" alt="mohammadmahdi_naeiji_portfolio 3: Biography"></div>
         </div>
         <div class="project-section" id="projects">
-            <div class="frame in-view" id="mohammadmahdi_naeiji4"><img src="images/mohammadmahdi_naeiji_4.jpg" alt="mohammadmahdi_naeiji 4: Project Overview"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio4"><img src="images/mohammadmahdi_naeiji_portfolio_4.jpg" alt="mohammadmahdi_naeiji_portfolio 4: Project Overview"></div>
         </div>
         <div class="project-section" id="caravan">
-            <div class="frame in-view" id="mohammadmahdi_naeiji5"><img src="images/mohammadmahdi_naeiji_5.jpg" alt="mohammadmahdi_naeiji 5: Caravan Project"></div>
+            <div class="frame in-view" id="mohammadmahdi_naeiji_portfolio5"><img src="images/mohammadmahdi_naeiji_portfolio_5.jpg" alt="mohammadmahdi_naeiji_portfolio 5: Caravan Project"></div>
         </div>
         <div class="project-section" id="hoveid">
-            <div class="frame" id="mohammadmahdi_naeiji16"><img src="images/mohammadmahdi_naeiji_16.jpg" alt="mohammadmahdi_naeiji 16: Hoveid Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji_portfolio16"><img src="images/mohammadmahdi_naeiji_portfolio_16.jpg" alt="mohammadmahdi_naeiji_portfolio 16: Hoveid Project"></div>
         </div>
         <div class="project-section" id="aftabe">
-            <div class="frame" id="mohammadmahdi_naeiji25"><img src="images/mohammadmahdi_naeiji_25.jpg" alt="mohammadmahdi_naeiji 25: Aftabe Dozd Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji_portfolio25"><img src="images/mohammadmahdi_naeiji_portfolio_25.jpg" alt="mohammadmahdi_naeiji_portfolio 25: Aftabe Dozd Project"></div>
         </div>
         <div class="project-section" id="ai_i">
-            <div class="frame" id="mohammadmahdi_naeiji29"><img src="images/mohammadmahdi_naeiji_29.jpg" alt="mohammadmahdi_naeiji 29: AI & I Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji_portfolio29"><img src="images/mohammadmahdi_naeiji_portfolio_29.jpg" alt="mohammadmahdi_naeiji_portfolio 29: AI & I Project"></div>
         </div>
         <div class="project-section" id="book">
-            <div class="frame" id="mohammadmahdi_naeiji37"><img src="images/mohammadmahdi_naeiji_37.jpg" alt="mohammadmahdi_naeiji 37: Book Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji_portfolio37"><img src="images/mohammadmahdi_naeiji_portfolio_37.jpg" alt="mohammadmahdi_naeiji_portfolio 37: Book Project"></div>
         </div>
         <div class="project-section" id="typography">
-            <div class="frame" id="mohammadmahdi_naeiji42"><img src="images/mohammadmahdi_naeiji_42.jpg" alt="mohammadmahdi_naeiji 42: Typography Project"></div>
+            <div class="frame" id="mohammadmahdi_naeiji_portfolio42"><img src="images/mohammadmahdi_naeiji_portfolio_42.jpg" alt="mohammadmahdi_naeiji_portfolio 42: Typography Project"></div>
         </div>
     </div>
     <div class="contact-bar" id="contactBar">
         <span class="contact-bar-label" data-en="Contact" data-fa="تماس">Contact</span>
         <div class="contact-icons">
             <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank"><img src="images/linkedin.svg" alt="LinkedIn"></a>
-            <a href="https://www.instagram.com/mohammadmahdi_naeiji/" target="_blank"><img src="images/instagram.svg" alt="Instagram"></a>
-            <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank"><img src="images/behance.svg" alt="Behance"></a>
+            <a href="https://www.instagram.com/mohammadmahdi_naeiji_portfolio/" target="_blank"><img src="images/instagram.svg" alt="Instagram"></a>
+            <a href="https://www.behance.net/mohammadmahdi_naeiji_portfolio" target="_blank"><img src="images/behance.svg" alt="Behance"></a>
         </div>
     </div>
     <button class="theme-toggle">
@@ -775,7 +775,7 @@
     <script>
         // --- Gallery Creation (Inject Missing Frames) ---
         const totalFrames = 46;
-        const imgPrefix = "images/mohammadmahdi_naeiji_"; // تغییر به حروف کوچک
+        const imgPrefix = "images/mohammadmahdi_naeiji_portfolio_"; // تغییر به حروف کوچک
         const ext = "jpg";
 
         // Helper to find a section by ID
@@ -803,10 +803,10 @@
                 for (let i = sectionInfo.start; i <= sectionInfo.end; i++) {
                     const frame = document.createElement("div");
                     frame.className = "frame";
-                    frame.id = `mohammadmahdi_naeiji${i}`; 
+                    frame.id = `mohammadmahdi_naeiji_portfolio${i}`; 
                     const img = document.createElement("img");
                     img.src = `${imgPrefix}${i}.${ext}`;
-                    img.alt = `mohammadmahdi_naeiji ${i}`; 
+                    img.alt = `mohammadmahdi_naeiji_portfolio ${i}`; 
                     frame.appendChild(img);
                     sectionElement.appendChild(frame);
                 }
@@ -914,7 +914,7 @@
         // --- Frame Scroll Effect (منطق اصلاح‌شده برای حفظ فریم‌های اولیه) ---
         const allFrames = document.querySelectorAll(".frame");
         // لیست فریم‌هایی که باید از ابتدا باز باشند و کلاس in-view را در HTML دریافت کرده‌اند
-        const initialOpenFrames = ["mohammadmahdi_naeiji2", "mohammadmahdi_naeiji3", "mohammadmahdi_naeiji4", "mohammadmahdi_naeiji5"];
+        const initialOpenFrames = ["mohammadmahdi_naeiji_portfolio2", "mohammadmahdi_naeiji_portfolio3", "mohammadmahdi_naeiji_portfolio4", "mohammadmahdi_naeiji_portfolio5"];
 
         function checkInView() {
             const windowHeight = window.innerHeight;
@@ -964,4 +964,5 @@
     </script>
 </body>
 </html>
+
 
