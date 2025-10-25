@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- صفحه اصلی -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- بخش‌ها -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#about</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_2.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_3.webp</image:loc>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#projects</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_4.webp</image:loc>
+        </image:image>
+    </url>
+
+    <!-- Caravan Brand -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#caravan</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_5.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_6.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_7.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_8.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_9.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_10.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_11.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_12.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_13.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_14.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_15.webp</image:loc>
+        </image:image>
+    </url>
+
+    <!-- Hoveid Brand -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#hoveid</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_16.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_17.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_18.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_19.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_20.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_21.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_22.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_23.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_24.webp</image:loc>
+        </image:image>
+    </url>
+
+    <!-- Aftabe Dozd -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#aftabe</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_25.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_26.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_27.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_28.webp</image:loc>
+        </image:image>
+    </url>
+
+    <!-- AI & I -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#ai_i</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_29.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_30.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_31.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_32.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_33.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_34.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_35.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_36.webp</image:loc>
+        </image:image>
+    </url>
+
+    <!-- Book Cover & Layout -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#book</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_37.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_38.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_39.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_40.webp</image:loc>
+        </image:image>
+    </url>
+
+    <!-- Typography -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/portfolio/#typography</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_41.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_42.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_43.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_44.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_45.webp</image:loc>
+            <image:loc>https://mohammadmahdinaeiji.github.io/portfolio/images/mohammadmahdi_naeiji_portfolio_46.webp</image:loc>
+        </image:image>
+    </url>
+
+</urlset>
