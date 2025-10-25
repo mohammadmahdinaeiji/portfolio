@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <!-- Example for portfolio images -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#about</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_2.webp</image:loc>
+            <image:caption>About Me</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_3.webp</image:loc>
+            <image:caption>Biography</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#projects</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_4.webp</image:loc>
+            <image:caption>Project Overview</image:caption>
+        </image:image>
+    </url>
+
+    <!-- ادامه برای بقیه پروژه‌ها و تصاویر -->
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#caravan</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_5.webp</image:loc>
+            <image:caption>Caravan Project</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#hoveid</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_16.webp</image:loc>
+            <image:caption>Hoveid Project</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#aftabe</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_25.webp</image:loc>
+            <image:caption>Aftabe Dozd Project</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#ai_i</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_29.webp</image:loc>
+            <image:caption>AI & I Project</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#book</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_37.webp</image:loc>
+            <image:caption>Book Cover & Layout</image:caption>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://mohammadmahdinaeiji.github.io/#typography</loc>
+        <image:image>
+            <image:loc>https://mohammadmahdinaeiji.github.io/images/mohammadmahdi_naeiji_portfolio_42.webp</image:loc>
+            <image:caption>Typography Project</image:caption>
+        </image:image>
+    </url>
+</urlset>
