@@ -947,7 +947,7 @@ projectCards.forEach(card => {
 });
 
 </script>
-            <div id="introOverlay">
+    <div id="introOverlay">
     <div class="intro-content">
         <span class="intro-name">mohammadmahdi naeiji</span>
         <span class="intro-portfolio">PORTFOLIO</span>
@@ -1087,9 +1087,16 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.unobserve(img);
       }
     });
-  },
+  }, {
+    rootMargin: "800px 0px 800px 0px" // 🔥 یعنی تا 800px بالا و پایین‌تر از دید کاربر رو هم preload کن
+  });
+
+  lazyImages.forEach(img => preloadObserver.observe(img));
+});
+</script>
 </body>
 </html>
+
 
 
 
