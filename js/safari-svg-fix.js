@@ -1,23 +1,16 @@
+// تابع تنظیم ابعاد SVGها
+function setSvgDimensions(selector, width = 32, height = 32, viewBox = "0 0 24 24") {
+    const svgs = document.querySelectorAll(selector);
+    svgs.forEach(svg => {
+        svg.setAttribute("width", width);
+        svg.setAttribute("height", height);
+        svg.setAttribute("viewBox", viewBox);
+    });
+}
+
+// اجرا بعد از لود DOM
 document.addEventListener("DOMContentLoaded", () => {
-    // بررسی Safari
-    function isSafari() {
-        const ua = navigator.userAgent;
-        return /^((?!chrome|android).)*safari/i.test(ua);
-    }
-
-    if (isSafari()) {
-        const targetFiles = ['moon.svg', 'sun.svg', 'contact.svg'];
-        const imgs = document.querySelectorAll('img');
-
-        imgs.forEach(img => {
-            const srcFile = img.src.split('/').pop(); // فقط اسم فایل
-            if (targetFiles.includes(srcFile)) {
-                const src = img.src;
-                img.src = '';
-                setTimeout(() => {
-                    img.src = src;
-                }, 50); // 50ms تا Safari رندر کنه
-            }
-        });
-    }
+    // روی آیکون‌های تم و باتن تماس اعمال می‌کنیم
+    setSvgDimensions(".theme-toggle svg");        // moon & sun
+    setSvgDimensions(".contact-btn svg");        // contact
 });
