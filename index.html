@@ -747,6 +747,12 @@ transition:transform 0.3s;
        © 1404 محمدمهدی نائیجی. کلیه حقوق محفوظ است.
     </p>
 </div>
+    <div id="introOverlay">
+    <div class="intro-content">
+        <span class="intro-name">mohammadmahdi naeiji</span>
+        <span class="intro-portfolio">PORTFOLIO</span>
+    </div>
+</div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -941,8 +947,150 @@ projectCards.forEach(card => {
 });
 
 </script>
+            <div id="introOverlay">
+    <div class="intro-content">
+        <span class="intro-name">mohammadmahdi naeiji</span>
+        <span class="intro-portfolio">PORTFOLIO</span>
+    </div>
+</div>
+
+<style>
+    /* 1. استایل‌دهی به Overlay */
+    #introOverlay {
+        /* متغیرهای رنگی از کد شما */
+        --accent-base: #1c68a6; 
+        --text-light: #fff;
+        
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* استفاده از رنگ آبی اصلی */
+        background-color: var(--accent-base); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* بالاتر از همه چیز */
+        opacity: 1;
+        visibility: visible;
+        /* انیمیشن محو شدن یا اسلاید شدن */
+        transition: all 0.7s cubic-bezier(0.65, 0.05, 0.36, 1); /* یک منحنی جذاب */
+    }
+
+    /* 2. استایل‌دهی محتوای داخل Overlay */
+    .intro-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: var(--text-light); /* متن سفید */
+        user-select: none;
+    }
+
+    /* 3. استایل‌دهی به نام (کوچک و لایت) */
+    .intro-name {
+        font-family: 'Peyda', sans-serif;
+        font-weight: 300; /* Light وزن فونت */
+        font-size: 1.5rem; /* اندازه کوچکتر */
+        letter-spacing: 0.1em;
+        margin-bottom: 5px;
+    }
+
+    /* 4. استایل‌دهی به Portfolio (بزرگ و بولد) */
+    .intro-portfolio {
+        font-family: 'Peyda', sans-serif;
+        font-weight: 700; /* Bold وزن فونت */
+        font-size: 4rem; /* اندازه بزرگتر */
+        letter-spacing: 0.2em; /* کمی فاصله بین حروف */
+    }
+
+    /* رده‌بندی برای پنهان شدن (بعد از انیمیشن) */
+    #introOverlay.hidden {
+        opacity: 0;
+        /* برای پنهان شدن کامل و خارج شدن از جریان صفحه */
+        visibility: hidden; 
+    }
+
+    /* (اختیاری) انیمیشن پنهان شدن به بالا - یک حرکت شیک‌تر */
+    #introOverlay.slide-up {
+        transform: translateY(-100%);
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 600px) {
+        .intro-portfolio {
+            font-size: 2.5rem;
+        }
+        .intro-name {
+            font-size: 1rem;
+        }
+    }
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const overlay = document.getElementById('introOverlay');
+
+        // تابع برای شروع انیمیشن و پنهان‌سازی
+        function hideOverlay() {
+            // اضافه کردن کلاس‌های پنهان‌سازی و انیمیشن
+            overlay.classList.add('slide-up'); 
+            overlay.classList.add('hidden'); 
+
+            // (اختیاری) اگر می‌خواهید محتوای اصلی را پس از محو شدن نمایش دهید:
+            // document.body.style.overflow = 'visible';
+        }
+
+        // 1. زمان انتظار (مثلاً 1.5 ثانیه)
+        setTimeout(() => {
+            hideOverlay();
+        }, 1500); // 1.5 ثانیه نمایش می‌دهد
+        
+        // 2. مطمئن شوید که پس از اتمام انیمیشن (0.7 ثانیه) المان حذف یا کاملاً پنهان شود.
+        overlay.addEventListener('transitionend', function() {
+            if (overlay.classList.contains('hidden')) {
+                // اطمینان از حذف المان پس از اتمام انیمیشن برای کلیک نشدن تصادفی روی آن
+                overlay.style.display = 'none';
+            }
+        });
+        
+    });
+ // --- Lazy Loading with Preload Buffer & Blur Transition ---
+document.addEventListener("DOMContentLoaded", () => {
+  const lazyImages = document.querySelectorAll('img[src*="mohammadmahdi_naeiji_portfolio_"]');
+
+  // تمام عکس‌ها lazy می‌شن تا بعداً srcشون رو زمانی که نزدیک دید هست لود کنیم
+  lazyImages.forEach(img => {
+    const src = img.getAttribute("src");
+    img.removeAttribute("src"); 
+    img.dataset.src = src;
+    img.classList.add("lazy");
+  });
+
+  // فاصله پیش‌لود: مقدار مثبت یعنی چند صد پیکسل قبل از دید شروع به لود کند
+  // rootMargin بالا/پایین زیاد باعث می‌شه عکس‌ها زودتر لود بشن
+  const preloadObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+
+        // لود تصویر اصلی
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.classList.add("loaded");
+          img.classList.remove("lazy");
+        };
+
+        // حذف از observer پس از لود
+        observer.unobserve(img);
+      }
+    });
+  },
 </body>
 </html>
+
 
 
 
