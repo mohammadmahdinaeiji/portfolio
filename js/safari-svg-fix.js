@@ -1,22 +1,35 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // تشخیص Safari
+document.addEventListener("DOMContentLoaded", function () {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     if (!isSafari) return;
 
-    // اصلاح تمام SVG های داخل <img>
-    const svgImgs = document.querySelectorAll('img[src$=".svg"]');
-    svgImgs.forEach(img => {
-        img.style.display = "block";
-        img.style.width = "100%";
-        img.style.height = "auto";
-        img.style.transformOrigin = "center center";
-    });
+    // انتخاب تمام دکمه‌هایی که داخلشون SVG هست
+    const buttons = document.querySelectorAll(
+        '.theme-toggle, .contact-btn, .popup-icons button, .popup-icons a, .popup-icons div'
+    );
 
-    // اصلاح آیکون‌هایی که transform دارند
-    const toggleButtons = document.querySelectorAll('.theme-toggle, .contact-btn, .popup-icons img');
-    toggleButtons.forEach(btn => {
+    buttons.forEach(btn => {
+        const svgImg = btn.querySelector('img[src$=".svg"]');
+        if (!svgImg) return;
+
+        // اندازه واقعی دکمه از کامپیوتد CSS
+        const btnStyles = window.getComputedStyle(btn);
+        const btnWidth = parseFloat(btnStyles.width);
+        const btnHeight = parseFloat(btnStyles.height);
+
+        // SVG همیشه کمی کوچیک‌تر از دکمه باشه (مثلاً 80%)
+        const size = Math.min(btnWidth, btnHeight) * 0.8;
+
+        // اعمال تنظیمات دقیق
+        svgImg.style.width = `${size}px`;
+        svgImg.style.height = `${size}px`;
+        svgImg.style.display = "block";
+        svgImg.style.margin = "auto";
+        svgImg.style.objectFit = "contain";
+        svgImg.style.transformOrigin = "center";
+
+        // جلوگیری از بُزرگ‌شدن بیش از حد هنگام hover
         btn.addEventListener('mouseenter', () => {
-            btn.style.transformOrigin = "center center";
+            svgImg.style.transformOrigin = "center center";
         });
     });
 });
