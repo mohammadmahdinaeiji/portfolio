@@ -1,32 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (!isSafari) return;
+document.addEventListener("DOMContentLoaded", () => {
+    // بررسی Safari
+    function isSafari() {
+        const ua = navigator.userAgent;
+        return /^((?!chrome|android).)*safari/i.test(ua);
+    }
 
-    const buttons = document.querySelectorAll(
-        '.theme-toggle, .contact-btn, .popup-icons button, .popup-icons a, .popup-icons div'
-    );
+    if (isSafari()) {
+        const targetFiles = ['moon.svg', 'sun.svg', 'contact.svg'];
+        const imgs = document.querySelectorAll('img');
 
-    buttons.forEach(btn => {
-        const svgImg = btn.querySelector('img[src$=".svg"]');
-        if (!svgImg) return;
-
-        // گرفتن ابعاد دقیق دکمه
-        const rect = btn.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-
-        // SVG → دقیقاً اندازه دکمه
-        svgImg.style.width = width + "px";
-        svgImg.style.height = height + "px";
-        svgImg.style.display = "block";
-
-        // کوچک‌سازی ×5
-        svgImg.style.transform = "scale(0.2)";
-        svgImg.style.transformOrigin = "center center";
-
-        // جلوگیری از جابجایی ناخواسته
-        svgImg.style.objectFit = "contain";
-        svgImg.style.margin = "0";
-        svgImg.style.padding = "0";
-    });
+        imgs.forEach(img => {
+            const srcFile = img.src.split('/').pop(); // فقط اسم فایل
+            if (targetFiles.includes(srcFile)) {
+                const src = img.src;
+                img.src = '';
+                setTimeout(() => {
+                    img.src = src;
+                }, 50); // 50ms تا Safari رندر کنه
+            }
+        });
+    }
 });
