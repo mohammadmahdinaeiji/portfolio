@@ -11,18 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!svgImg) return;
 
         // گرفتن ابعاد دقیق دکمه
-        const btnRect = btn.getBoundingClientRect();
-        const width = btnRect.width;
-        const height = btnRect.height;
+        const rect = btn.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
 
-        // تنظیم دقیق SVG برابر دکمه
+        // SVG → دقیقاً اندازه دکمه
         svgImg.style.width = width + "px";
         svgImg.style.height = height + "px";
-
-        // جلوگیری از بهم‌ریختن
-        svgImg.style.objectFit = "contain";
-        svgImg.style.transformOrigin = "center center";
         svgImg.style.display = "block";
+
+        // کوچک‌سازی ×5
+        svgImg.style.transform = "scale(0.2)";
+        svgImg.style.transformOrigin = "center center";
+
+        // جلوگیری از جابجایی ناخواسته
+        svgImg.style.objectFit = "contain";
         svgImg.style.margin = "0";
         svgImg.style.padding = "0";
     });
