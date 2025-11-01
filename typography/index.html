@@ -615,19 +615,31 @@ document.addEventListener('DOMContentLoaded', () => {
         navHeader.addEventListener('click', () => nav.classList.toggle('expanded'));
     }
 
-    // ---------- Theme Switch ----------
-    const themeBtn = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    function updateThemeIcon() {
-        themeIcon.src = document.body.classList.contains('light') ? "../images/moon.svg" : "../images/sun.svg";
-    }
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light');
-            updateThemeIcon();
-        });
+// ---------- Theme Switch ----------
+const themeBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+// تابع بروزرسانی آیکون بر اساس تم
+function updateThemeIcon() {
+    themeIcon.src = document.body.classList.contains('light') ? "../images/moon.svg" : "../images/sun.svg";
+}
+
+// بازیابی آخرین تم ذخیره شده
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.body.classList.toggle('light', savedTheme === 'light');
+}
+
+// اضافه کردن رویداد کلیک برای تغییر تم
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        const currentTheme = document.body.classList.contains('light') ? 'light' : 'dark';
+        localStorage.setItem('theme', currentTheme); // ذخیره تم در localStorage
         updateThemeIcon();
-    }
+    });
+    updateThemeIcon(); // بروزرسانی اولیه آیکون
+}
 
     // ---------- Contact Popup ----------
     const contactBtn = document.querySelector('.contact-btn');
@@ -652,3 +664,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
