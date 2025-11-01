@@ -1,0 +1,913 @@
+```html
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammadmahdi Naeiji | Portfolio</title>
+    <meta name="description" content="Mohammadmahdi Naeiji's professional portfolio, showcasing work in Branding, Graphic Design, Typography, and UI/UX design.">
+    <meta name="keywords" content="Mohammadmahdi Naeiji, محمدمهدی نائیجی, Graphic Design, Branding, Portfolio, UI/UX, Typography, Iran, Designer">
+    <meta name="author" content="Mohammadmahdi Naeiji">
+    <meta property="og:title" content="Mohammadmahdi Naeiji | Portfolio">
+    <meta property="og:description" content="Professional portfolio of Mohammadmahdi Naeiji in Branding, Graphic Design, and UI/UX.">
+<!-- Favicon اصلی -->
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+<!-- PNG های استاندارد -->
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+<!-- آیکون اندروید / Chrome -->
+<link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512x512.png">
+
+<!-- آیکون اپل / iOS -->
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="/images/site.webmanifest">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محمدمهدی نائیجی | Portfolio</title>
+<style>
+:root{
+--bg-light:#fdfdfd;
+--bg-dark:#1e1e1e;
+--text-light:#fff;
+--text-dark:#000;
+--accent-base:#1c68a6;
+--accent-light:#5aa0df;
+--shadow-color-dark:rgba(0,0,0,0.4);
+}
+
+/* --- Font Face for Farsi (Local - Peyda) --- */
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-Thin.woff2') format('woff2'); font-weight: 100; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-Light.woff2') format('woff2'); font-weight: 300; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-Regular.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-Medium.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-SemiBold.woff2') format('woff2'); font-weight: 600; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-Bold.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-ExtraBold.woff2') format('woff2'); font-weight: 800; }
+@font-face { font-family: 'Peyda'; src: url('fonts/PeydaWebFaNum-Black.woff2') format('woff2'); font-weight: 900; }
+
+body {
+  --bg: var(--bg-dark);
+  --text: var(--text-light);
+}
+
+body.light {
+  --bg: var(--bg-light);
+  --text: var(--text-dark);
+}
+
+/* Body */
+body {
+  margin: 0;
+  font-family: 'Peyda', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.7s ease, color 0.7s ease;
+  scroll-behavior: smooth;
+  direction: rtl;
+}
+
+/* Nav */
+nav{
+position:fixed;
+z-index: 3000;
+top:0;width:100%;
+background:var(--accent-base);
+border-radius:0 0 16px 16px;
+box-shadow:0 4px 12px var(--shadow-color-dark);
+transition:all 0.5s ease;
+}
+.nav-controls{
+display:flex;
+justify-content:space-between;
+align-items:center;
+height:60px;
+padding:0 20px;
+color:var(--text-light);
+font-weight:700;
+flex-direction:row;
+}
+
+/* عنوان سمت چپ */
+.nav-header-new {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--accent-light);
+  border-radius: 12px;
+  padding: 6px 12px;
+  transition: background 0.3s, border-color 0.3s;
+  margin-right: auto;
+}
+
+.nav-header-new:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+.nav-header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.main-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.sub-title {
+  font-weight: 300;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: solid var(--text-light);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+  margin-left: 10px;
+}
+
+nav.expanded .arrow {
+  transform: rotate(135deg);
+}
+
+/* لینک‌ها */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+    align-items: center;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+nav.expanded .nav-links {
+    max-height: 500px;
+    opacity: 1;
+    padding-bottom: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff; /* رنگ ثابت */
+    font-weight: 500; /* وزن ثابت */
+    transition: text-shadow 0.3s; /* انیمیشن سریع استروک */
+}
+
+.nav-links a:hover {
+    text-shadow:
+        -0.2px -0.2px 0 #fff,
+         0.2px -0.2px 0 #fff,
+        -0.2px  0.2px 0 #fff,
+         0.2px  0.2px 0 #fff; /* Shadow سفید بسیار ظریف شبیه استروک */
+}
+
+
+/* سوییچ زبان */
+.lang-toggle {
+  display: flex;
+  gap: 5px;
+  padding: 5px 0;
+  direction: ltr; /* اینجا می‌تونید rtl یا ltr بذارید */
+}
+
+.lang-toggle button {
+  background: none;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+  opacity: 1.8; /* توجه: مقدار بالای 1 نرمال نیست، بهتر 0.8 باشه */
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 300;
+  transition: opacity 0.3s, transform 0.3s; /* اضافه کردن transform برای انیمیشن بزرگ شدن */
+}
+
+.lang-toggle button.active {
+  opacity: 1;
+  font-weight: 500;
+}
+
+/* وقتی موس روی دکمه رفت */
+.lang-toggle button:hover {
+  transform: scale(1.1); /* بزرگ شدن 10٪ */
+  opacity: 1;
+}
+
+.lang-toggle img {
+  width: 25px;
+  height: 20px;
+  border-radius: 2px;
+  margin-right: 3px;
+  transition: transform 0.3s; /* اگر خواستید تصویر هم کمی بزرگ شود */
+}
+
+.lang-toggle button:hover img {
+  transform: scale(1.1);
+}
+
+/* Hero */
+.hero-section{padding-top:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:50vh;background:var(--bg-dark);transition:background 0.7s;}
+body.light .hero-section{background:var(--bg-light);}
+.hero-avatar{width:150px;height:150px;border-radius:16px;overflow:hidden;margin-bottom:20px;border:5px solid var(--accent-base);}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;}
+.hero-title h1{font-size:2.5rem;font-weight:800;margin:0 0 5px;}
+.hero-title h2{font-size:1.2rem;font-weight:300;margin:0 0 10px;opacity:0.8;}
+.hero-bio p {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    text-align: justify;         /* متن اصلی justify */
+    text-align-last: center;     /* خط آخر وسط */
+    direction: inherit;          /* جهت متن از body گرفته می‌شود */
+}
+/* لینکدین دکمه - هم در حالت تاریک و هم روشن */
+.hero-primary-btn {
+    background-color: var(--accent-base);
+    color: var(--text-light);
+    border-radius: 12px;
+    padding: 12px 30px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.hero-primary-btn:hover {
+    background: none;
+    color: var(--accent-base);
+    border: 2px solid var(--accent-base);
+}
+
+/* حالت لایت */
+body.light .hero-primary-btn {
+    background-color: var(--accent-base); /* مستطیل آبی */
+    color: var(--text-light);             /* متن سفید */
+    border: 2px solid var(--accent-base);
+}
+
+body.light .hero-primary-btn:hover {
+    background: none;
+    color: var(--accent-base);
+}
+.hero-actions {
+    margin-bottom: 40px; /* فاصله کل بخش دکمه از گالری */
+}
+
+/* Gallery - Dark Mode (Default) */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 5vw 50px;
+}
+/* --- Project Cards --- */
+.project-card {
+
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+/* Image */
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dark Gradient Overlay */
+.project-card::before {
+    content: "";
+    position: absolute;
+    bottom: -80;
+    left: 0;
+    width: 100%;
+    height: 55%; /* پایین‌تر قرار گرفت */
+    background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+    transition: transform 0.4s ease;
+    transform: translateY(25px); /* پایین‌تر در حالت عادی */
+}
+
+/* Hover Motion */
+.project-card:hover::before {
+    transform: translateY(0);
+}
+
+/* Text Container */
+.card-info {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    transition: transform 0.4s ease;
+}
+
+/* Title */
+.card-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px; /* فاصله مناسب */
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+/* Subtitle */
+.card-subtitle {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 300;
+    opacity: 0;
+    color: #fff;
+    transition: opacity 0.4s ease;
+}
+
+/* Hover Animation */
+.project-card:hover .card-title {
+    transform: translateY(0);
+}
+
+.project-card:hover .card-subtitle {
+    opacity: 1;
+}
+
+/* Light Mode → متن همچنان سفید */
+body.light .card-title,
+body.light .card-subtitle {
+    color: #fff !important;
+}
+
+/* Gallery - Light Mode */
+body.light .gallery {
+    background: #f9f9f9;
+}
+body.light .project-card {
+    background: #1c68a6;  /* کل کارت آبی */
+    border: 1px;          /* بردر حذف شد */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+}
+body.light .project-card img {
+    border: none;          /* بردر عکس در تم لایت حذف شود */
+}
+body.light .project-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.project-card.touch-active::after {
+    bottom: 0;
+}
+
+.project-card.touch-active .card-info {
+    bottom: 10px;
+}
+
+.project-card.touch-active .card-subtitle {
+    opacity: 1;
+}
+/* Overlay برای محو کردن پس‌زمینه */
+.gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0); /* شفاف */
+  backdrop-filter: blur(1px); /* blur صفر */
+  opacity: 0; /* کاملاً مخفی */
+  pointer-events: none;
+  transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+  z-index: 999;
+}
+
+
+/* کارت فعال */
+.project-card.active-card {
+  z-index: 2000;
+  transform: scale(1.1) rotate(var(--rotate-deg, 0deg));
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Footer */
+.site-footer{text-align:center;padding:20px 0 40px;font-size:0.85rem;opacity:0.7;}
+
+/* ---------------- Desktop Contact ---------------- */
+
+
+/* --- Contact Bar --- */
+.contact-bar{
+  position:fixed;left:0;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;
+  z-index:1000;background:var(--accent-base);border-radius:0 16px 16px 0;
+  padding:10px 5px;width:50px;height:70px;overflow:hidden;cursor:pointer;
+  box-shadow:4px 0 12px var(--shadow-dark);transition:all 0.4s;
+}
+.contact-bar-label{font-size:14px;color:#fff;font-weight:500;margin-bottom:5px;text-align:center;}
+.contact-icons{display:flex;flex-direction:column;align-items:center;opacity:0;max-height:0;margin-top:0;transition:max-height 0.4s, opacity 0.4s;}
+.contact-icons a{margin:5px 0;}
+.contact-icons img{width:32px;height:32px;}
+.contact-bar:hover .contact-icons,.contact-bar.active .contact-icons{opacity:1;max-height:150px;}
+.contact-bar:hover{height:180px;}
+
+/* ---------------- Mobile Contact ---------------- */
+.contact-bar-mobile {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 90px;
+  z-index: 1100;
+}
+
+@media (max-width: 768px) {
+  .contact-bar-desktop { display: none; }
+
+  .contact-bar-mobile { display: block; }
+
+  .contact-btn,
+  .theme-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--accent-base);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+  }
+
+  .contact-btn:hover,
+  .theme-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .contact-popup {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 200px;
+    background-color: var(--accent-base);
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: max-height 0.4s, opacity 0.4s, transform 0.3s;
+  }
+
+  .contact-popup.active {
+    max-height: 250px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .popup-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
+  }
+
+  .popup-icons img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s;
+  }
+
+  .popup-icons img:hover {
+    transform: scale(1.2); /* بزرگ شدن لوگو هنگام هاور موبایل */
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+
+/* Theme toggle (desktop + mobile) */
+.theme-toggle{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:1101;
+width:50px;
+height:50px;
+border-radius:50%;
+border:none;
+background-color:var(--accent-base);
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+transition:transform 0.3s;
+}
+.theme-toggle:hover{transform:scale(1.1);}
+</style>
+</head>
+<body class="dark">
+
+<!-- Nav -->
+<nav id="mainNav">
+<div class="nav-controls">
+<div class="lang-toggle" id="langToggle">
+<button data-lang="en" class="active">
+    <img src="images/gb.png" alt="English Flag">EN
+</button>
+<button data-lang="fa">
+    <img src="images/ir.png" alt="Farsi Flag">FA
+</button>
+
+</div>
+<div class="nav-header-new">
+<span class="nav-header-text">
+<span class="main-title">Portfolio</span>
+<span class="sub-title">محمدمهدی نائیجی</span>
+</span>
+<span class="arrow"></span>
+</div>
+</div>
+<div class="nav-links" id="navLinks">
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">درباره من</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/caravan">برند کاروان</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/hoveid">برند هوید</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/aftabe">بازی رو میزی آفتابه دزد</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/ai_i">AI & I</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/book">جلد کتاب</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/typography">تایپوگرافی</a>
+    <a href="https://mohammadmahdinaeiji.github.io/portfolio/illustration">تصویرسازی</a>
+</div>
+
+</nav>
+
+<section class="hero-section">
+    <div class="hero-avatar">
+        <img src="images/mohammadmahdi_naeiji.webp" alt="Mohammadmahdi Naeiji,محمدمهدی نائیجی">
+    </div>
+    <div class="hero-title">
+        <h1 data-en="Mohammadmahdi Naeiji" data-fa="محمدمهدی نائیجی">Mohammadmahdi Naeiji</h1>
+        <h2 data-en="Graphic Designer" data-fa="طراح گرافیک">Graphic Designer</h2>
+</div>
+<div class="hero-bio">
+    <p data-en="I’m Mohammadmahdi Naeiji, a 19-year-old graphic designer specializing in digital design, illustration, and effective use of AI in creative work. As a graphic design student, I’m passionate about advancing my skills in brand identity and complex visual projects. My goal is to create designs that are not only striking and innovative but also communicate the brand’s message with clarity and impact."
+       data-fa="من محمدمهدی نائیجی هستم، طراح گرافیک ۱۹ ساله با تمرکز بر طراحی دیجیتال، تصویرسازی و استفاده مؤثر از هوش مصنوعی در خلق آثار خلاقانه. دانشجوی رشته طراحی گرافیک و علاقه‌مند به توسعه مهارت‌هایم در زمینه هویت برند و پروژه‌های بصری پیچیده هستم. هدف من خلق طراحی‌هایی است که نه تنها چشمگیر و خلاقانه باشند، بلکه پیام برند را با قدرت و دقت منتقل کنند.">
+من محمدمهدی نائیجی هستم، طراح گرافیک ۱۹ ساله با تمرکز بر طراحی دیجیتال، تصویرسازی و استفاده مؤثر از هوش مصنوعی در خلق آثار خلاقانه. دانشجوی رشته طراحی گرافیک و علاقه‌مند به توسعه مهارت‌هایم در زمینه هویت برند و پروژه‌های بصری پیچیده هستم. هدف من خلق طراحی‌هایی است که نه تنها چشمگیر و خلاقانه باشند، بلکه پیام برند را با قدرت و دقت منتقل کنند.
+    </p>
+</div>
+
+    <div class="hero-actions">
+            <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank" class="hero-primary-btn" data-en="View on LinkedIn" data-fa="مشاهده در لینکدین">View on LinkedIn</a>
+        </div>
+</section>
+
+
+<div class="gallery">
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">
+    <img src="images/about.webp" alt="About me / درباره من">
+    <div class="card-info">
+      <span class="card-title" data-fa="درباره من" data-en="About me">درباره من</span>
+      <span class="card-subtitle" data-fa="رزومه، بیوگرافی و مهارت‌ها" data-en="Biography & Skills">رزومه، بیوگرافی و مهارت‌ها</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/caravan">
+    <img src="images/caravan.webp" alt="Caravan Brand / برند کاروان">
+    <div class="card-info">
+      <span class="card-title" data-fa="برند کاروان" data-en="Caravan Brand">برند کاروان</span>
+      <span class="card-subtitle" data-fa="هویت بصری برند" data-en="Brand Visual Identity">هویت بصری برند</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/hoveid">
+    <img src="images/hoveid.webp" alt="Hoveid Brand / برند هوید">
+    <div class="card-info">
+      <span class="card-title" data-fa="برند هوید" data-en="Hoveid Brand">برند هوید</span>
+      <span class="card-subtitle" data-fa="هویت بصری برند + طراحی مسکات" data-en="Brand Visual Identity + Mascot Design">هویت بصری برند + طراحی مسکات</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/aftabe">
+    <img src="images/aftabe.webp" alt="Aftabe Boardgame / بازی آفتابه دزد">
+    <div class="card-info">
+      <span class="card-title" data-fa="بازی آفتابه دزد" data-en="Aftabe Dozd">بازی آفتابه دزد</span>
+      <span class="card-subtitle" data-fa="تصویرسازی و مدلسازی بازی رومیزی" data-en="Boardgame">بازی رومیزی</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/ai_i">
+    <img src="images/ai_i.webp" alt="AI & I / هوش مصنوعی و من">
+    <div class="card-info">
+      <span class="card-title" data-fa="هوش مصنوعی و من" data-en="AI & I">هوش مصنوعی و من</span>
+      <span class="card-subtitle" data-fa="پروژه‌های AI" data-en="AI Projects">پروژه‌های AI</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/book">
+    <img src="images/book.webp" alt="Book Cover / جلد کتاب و لی‌اوت">
+    <div class="card-info">
+      <span class="card-title" data-fa="طراحی جلد کتاب و لی‌اوت" data-en="Book Cover">جلد کتاب و لی‌اوت</span>
+      <span class="card-subtitle" data-fa="طراحی جلد و صفحه آرایی کتاب" data-en="Cover & Layout">طراحی جلد و لی‌آوت</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/typography">
+    <img src="images/typography.webp" alt="Typography / تایپوگرافی">
+    <div class="card-info">
+      <span class="card-title" data-fa="تایپوگرافی" data-en="Typography">تایپوگرافی</span>
+      <span class="card-subtitle" data-fa="طراحی تایپوگرافی پوستر و لوگوتایپ برند" data-en="Font Design">طراحی فونت</span>
+    </div>
+  </a>
+
+  <a class="project-card" href="https://mohammadmahdinaeiji.github.io/portfolio/illustration">
+    <img src="images/illustration.webp" alt="Illustration / تصویرسازی">
+    <div class="card-info">
+      <span class="card-title" data-fa="تصویرسازی" data-en="Illustration">تصویرسازی</span>
+      <span class="card-subtitle" data-fa="تصویرسازی کتاب و تصویرسازی شخصی" data-en="Book & Personal Illustration">تصویرسازی کتاب و تصویرسازی شخصی</span>
+    </div>
+  </a>
+
+</div>
+<div class="gallery-overlay" id="galleryOverlay"></div>
+
+<div  class="contact-bar contact-bar-desktop">
+  <span class="contact-bar-label" id="contact-label">Contact</span>
+  <div class="contact-icons">
+    <a href="https://www.behance.net/"><img src="images/behance.svg" alt="Behance"></a>
+    <a href="https://www.instagram.com/"><img src="images/instagram.svg" alt="Instagram"></a>
+    <a href="https://www.linkedin.com/"><img src="images/linkedin.svg" alt="LinkedIn"></a>
+  </div>
+</div>
+
+<!-- Mobile Contact -->
+<div class="contact-bar-mobile">
+    <button class="contact-btn">
+        <img src="images/contact.svg" alt="Contact">
+    </button>
+    <div class="contact-popup">
+        <button class="close-btn">&times;</button>
+        <div class="popup-icons">
+            <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank">
+                <img src="images/behance.svg" alt="Behance">
+            </a>
+            <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank">
+                <img src="images/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/mohammadmahdi_naeiji/" target="_blank">
+                <img src="images/instagram.svg" alt="Instagram">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="themeToggle">
+<img src="images/sun.svg" alt="Theme Icon" id="themeIcon">
+</button>
+
+<div class="site-footer">
+    <p data-en="© 2025 Mohammadmahdi Naeiji. All rights reserved."
+       data-fa="© 1404 محمدمهدی نائیجی. کلیه حقوق محفوظ است.">
+       © 1404 محمدمهدی نائیجی. کلیه حقوق محفوظ است.
+    </p>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ---------------- Intro Overlay Animation ---------------- */
+    const overlay = document.getElementById('introOverlay');
+
+    function hideOverlay() {
+        overlay.classList.add('slide-up');
+        overlay.classList.add('hidden');
+    }
+
+    if (overlay) {
+        setTimeout(hideOverlay, 1500);
+        overlay.addEventListener('transitionend', () => {
+            if (overlay.classList.contains('hidden')) {
+                overlay.style.display = 'none';
+            }
+        });
+    }
+
+    /* ---------------- Lazy Loading Images ---------------- */
+    const lazyImages = document.querySelectorAll('img[data-lazy]');
+    lazyImages.forEach(img => {
+        img.dataset.src = img.src;
+        img.src = "";
+        img.classList.add("lazy");
+    });
+
+    const preloadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const img = e.target;
+                img.src = img.dataset.src;
+                img.onload = () => img.classList.add("loaded");
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: "800px 0px 800px 0px"
+    });
+
+    lazyImages.forEach(img => preloadObserver.observe(img));
+
+// ======== Cookie Functions ========
+function setLanguageCookie(lang) {
+    const days = 365; // مدت اعتبار کوکی: 1 سال
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/portfolio;`;
+}
+
+function getLanguageCookie() {
+    const name = "lang=";
+    const decoded = decodeURIComponent(document.cookie);
+    const ca = decoded.split(';');
+    for(let i=0;i<ca.length;i++){
+        let c = ca[i].trim();
+        if(c.indexOf(name) === 0) return c.substring(name.length);
+    }
+    return null;
+}
+
+// ======== Apply Language ========
+function applyLanguage(lang) {
+    // تغییر دکمه‌ها
+    const langButtons = document.querySelectorAll('.lang-toggle button');
+    langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+
+    // تغییر المان‌ها با data-fa / data-en
+    const elements = document.querySelectorAll('[data-fa], [data-en]');
+    elements.forEach(el => {
+        if(el.dataset[lang]) el.textContent = el.dataset[lang];
+    });
+
+    // مثال: متن فوتر
+    const footerText = document.querySelector('.site-footer p');
+    if(footerText && footerText.dataset[lang]) footerText.textContent = footerText.dataset[lang];
+
+    // تغییر لینک‌های ناوبری
+    const navLinks = document.querySelectorAll('#navLinks a');
+    const navItemsFa = ["درباره من","برند کاروان","برند هوید","آفتابه دزد","AI & I","جلد کتاب","تایپوگرافی","تصویرسازی"];
+    const navItemsEn = ["About me","Caravan Brand","Hoveid Brand","Aftabe Dozd","AI & I","Book Cover","Typography","Illustration"];
+    const items = lang === 'fa' ? navItemsFa : navItemsEn;
+    navLinks.forEach((a,i)=>a.textContent = items[i] || "");
+
+    // ست کردن زبان در کوکی
+    setLanguageCookie(lang);
+    document.documentElement.lang = lang; // تنظیم lang در تگ html
+}
+
+// ======== Event Listeners for Language Buttons ========
+const langButtons = document.querySelectorAll('.lang-toggle button');
+langButtons.forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+});
+
+// ======== Apply language on page load ========
+document.addEventListener('DOMContentLoaded', () => {
+    const lang = getLanguageCookie() || 'fa'; // اگر کوکی نبود، فارسی
+    applyLanguage(lang);
+});
+    /* ---------------- Navbar Toggle ---------------- */
+    const nav = document.getElementById('mainNav');
+    const navHeader = document.querySelector('.nav-header-new');
+
+    if (navHeader && nav) {
+        navHeader.addEventListener('click', () =>
+            nav.classList.toggle('expanded')
+        );
+    }
+
+
+    /* ---------------- Theme Switch ---------------- */
+    const themeBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function updateThemeIcon() {
+        if (document.body.classList.contains('light')) {
+            themeIcon.src = "images/moon.svg";
+        } else {
+            themeIcon.src = "images/sun.svg";
+        }
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light');
+            updateThemeIcon();
+        });
+        updateThemeIcon();
+    }
+
+
+    /* ---------------- Contact Popup ---------------- */
+    const contactBtn = document.querySelector('.contact-btn');
+    const contactPopup = document.querySelector('.contact-popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if (contactBtn && contactPopup) {
+        contactBtn.addEventListener('click', () => contactPopup.classList.add('active'));
+    }
+    if (closeBtn && contactPopup) {
+        closeBtn.addEventListener('click', () => contactPopup.classList.remove('active'));
+    }
+
+});
+const cards = document.querySelectorAll('.project-card');
+let lastTapCard = null;
+let tapTimeout;
+
+cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        const isMobile = window.innerWidth < 768;
+
+        if (!isMobile) return; // دسکتاپ کاری نکنه
+
+        if (lastTapCard !== card) {
+            e.preventDefault();
+            lastTapCard = card;
+            
+            // فعال‌سازی افکت
+            card.classList.add('touch-active');
+
+            clearTimeout(tapTimeout);
+            tapTimeout = setTimeout(() => {
+                card.click();
+            }, 500); // نیم‌ثانیه نمایش زیرعنوان
+        }
+    });
+});
+const galleryOverlay = document.getElementById('galleryOverlay');
+const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        // مقدار چرخش رندوم بین -5 تا 5 درجه
+        const rotateDeg = (Math.random() * 10 - 5).toFixed(2);
+        card.style.setProperty('--rotate-deg', rotateDeg + 'deg');
+        
+        // اضافه کردن کلاس فعال و نمایش overlay
+        card.classList.add('active-card');
+        galleryOverlay.style.opacity = '1';
+        galleryOverlay.style.pointerEvents = 'auto';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        // حذف کلاس و محو کردن overlay
+        card.classList.remove('active-card');
+        galleryOverlay.style.opacity = '0';
+        galleryOverlay.style.pointerEvents = 'none';
+    });
+});
+
+</script>
+</body>
+</html>
+
+
