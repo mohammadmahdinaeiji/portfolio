@@ -1,49 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/</loc>
-    <priority>1.00</priority>
-  </url>
 
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/aboutme/</loc>
-    <priority>0.90</priority>
-  </url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/aboutme/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/caravan/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/hoveid/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/aftabedozd/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/ai_i/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/book/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/typography/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mohammadmahdinaeiji.github.io/portfolio/illustration/</loc>
+  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/aftabedozd/</loc>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/ai_i/</loc>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/book/</loc>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/caravan/</loc>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/hoveid/</loc>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/illustration/</loc>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://mohammadmahdinaeiji.github.io/portfolio/typography/</loc>
-    <priority>0.85</priority>
-  </url>
 
 </urlset>
