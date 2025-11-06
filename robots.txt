@@ -1,5 +1,9 @@
 User-agent: *
+Disallow: /fonts/
+Disallow: /js/
+Disallow: /assets/
 Allow: /
 sitemap: https://mohammadmahdinaeiji.github.io/portfolio/sitemap.xml
+
 
 
