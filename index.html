@@ -569,8 +569,7 @@
             transition:transform 0.3s;
         }
         .theme-toggle:hover{transform:scale(1.1);}
-
-        /* ======== Global Maintenance Overlay ======== */
+/* ======== Global Maintenance Overlay ======== */
 .maintenance-overlay {
     position: fixed;
     inset: 0;
@@ -588,29 +587,31 @@ body.light .maintenance-overlay {
     background: var(--bg-light);
 }
 
+.maintenance-overlay img {
+    width: 420px;          /* بزرگ‌تر */
+    max-width: 90%;
+    border-radius: 24px;   /* لبه گرد */
+    margin-bottom: 30px;   /* فاصله از متن */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
 .maintenance-overlay h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+    font-size: 2.2rem;
     font-weight: 700;
+    margin-bottom: 15px;
 }
 
 .maintenance-overlay p {
     font-weight: 300;
     opacity: 0.8;
-    margin-bottom: 25px;
-}
-
-.maintenance-overlay img {
-    width: 220px;
-    max-width: 80%;
 }
     </style>
 </head>
 <body class="dark">
 <div class="maintenance-overlay">
+    <img src="images/maintenance.gif" alt="Site Under Maintenance">
     <h1>سایت در حال بروزرسانی است</h1>
     <p>Please check back soon.</p>
-    <img src="images/maintenance.gif" alt="Site Under Maintenance">
 </div>
     <nav id="mainNav">
         <div class="nav-controls">
@@ -966,4 +967,5 @@ body.light .maintenance-overlay {
     </script>
 </body>
 </html>
+
 
