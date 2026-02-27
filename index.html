@@ -569,10 +569,49 @@
             transition:transform 0.3s;
         }
         .theme-toggle:hover{transform:scale(1.1);}
+
+        /* ======== Global Maintenance Overlay ======== */
+.maintenance-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    text-align: center;
+    padding: 20px;
+}
+
+body.light .maintenance-overlay {
+    background: var(--bg-light);
+}
+
+.maintenance-overlay h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.maintenance-overlay p {
+    font-weight: 300;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.maintenance-overlay img {
+    width: 220px;
+    max-width: 80%;
+}
     </style>
 </head>
 <body class="dark">
-
+<div class="maintenance-overlay">
+    <h1>سایت در حال بروزرسانی است</h1>
+    <p>Please check back soon.</p>
+    <img src="images/maintenance.gif" alt="Site Under Maintenance">
+</div>
     <nav id="mainNav">
         <div class="nav-controls">
             <div class="lang-toggle" id="langToggle">
@@ -927,3 +966,4 @@
     </script>
 </body>
 </html>
+
