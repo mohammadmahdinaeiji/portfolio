@@ -152,6 +152,8 @@
             transition:.25s
         }
         .icon-btn:hover,.menu-btn:hover{transform:translateY(-2px);border-color:rgba(76,158,255,.5)}
+        body.light .icon-btn{background:#1677ff;border-color:#1677ff;color:#fff}
+        body.light .icon-btn:hover{background:#0b5fd7;border-color:#0b5fd7}
         .icon-btn img{width:20px;height:20px}
         .menu-btn{display:none}
 
@@ -172,7 +174,7 @@
             font-size:clamp(3rem,7vw,6.8rem);line-height:.94;letter-spacing:-.055em;
             margin:22px 0 18px;font-weight:900;max-width:850px
         }
-        .hero h1 span{color:transparent;-webkit-text-stroke:1px var(--text);opacity:.55}
+        .hero h1 span{color:var(--text);-webkit-text-stroke:0;opacity:1}
         .hero-role{font-size:clamp(1.1rem,2vw,1.55rem);color:var(--muted);margin:0 0 24px;font-weight:300}
         .hero-bio{max-width:680px;color:var(--muted);font-size:16px;line-height:2;text-align:justify}
         .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
@@ -377,7 +379,7 @@
     <header class="site-nav" id="siteNav">
         <div class="nav-inner">
             <a class="brand" href="#top" aria-label="Portfolio">
-                <span class="brand-mark favicon-mark"><img src="/favicon-32x32.png" alt="MN"></span>
+                <span class="brand-mark favicon-mark"><img src="images/iconsite.webp" alt="MN"></span>
                 <span class="brand-copy">
                     <strong>Mohammadmahdi Naeiji</strong>
                     <span>Graphic Designer · Portfolio</span>
