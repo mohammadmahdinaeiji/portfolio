@@ -255,22 +255,144 @@
         .empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);display:none}
 
         /* Contact */
-        .contact-section{width:min(1180px,calc(100% - 40px));margin:0 auto 70px}
-        .contact-box{
-            border:1px solid var(--line);border-radius:28px;background:
-            linear-gradient(135deg,rgba(16,185,129,.13),transparent 55%),var(--surface);
-            padding:45px;display:flex;justify-content:space-between;align-items:center;gap:30px
-        }
-        .contact-box h2{font-size:clamp(1.8rem,4vw,3.4rem);margin:0 0 10px;font-weight:900}
-        .contact-box p{margin:0;color:var(--muted);font-size:13px}
-        .socials{display:flex;gap:8px}
-        .socials a{
-            width:48px;height:48px;border:1px solid var(--line);border-radius:15px;background:var(--surface-2);
-            display:grid;place-items:center;transition:.25s
-        }
-        body.light .socials a{background:#10b981;border-color:#10b981;color:#fff}
-        body.light .socials a:hover{transform:translateY(-4px);background:#0b6346;border-color:#0b6346}
-        .socials img{width:22px;height:22px}
+.contact-section{
+    width:min(1180px,calc(100% - 40px));
+    margin:0 auto 70px
+}
+
+.contact-box{
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:
+        linear-gradient(135deg,rgba(16,185,129,.13),transparent 55%),
+        var(--surface);
+    padding:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px
+}
+
+.contact-box h2{
+    font-size:clamp(1.8rem,4vw,3.4rem);
+    margin:0 0 10px;
+    font-weight:900
+}
+
+.contact-box p{
+    margin:0;
+    color:var(--muted);
+    font-size:13px
+}
+
+.socials{
+    display:flex;
+    gap:8px
+}
+
+.socials a{
+    width:48px;
+    height:48px;
+    border:1px solid var(--line);
+    border-radius:15px;
+    background:var(--surface-2);
+    display:grid;
+    place-items:center;
+    transition:.25s
+}
+
+body.light .socials a{
+    background:#10b981;
+    border-color:#10b981;
+    color:#fff
+}
+
+body.light .socials a:hover{
+    transform:translateY(-4px);
+    background:#0b6346;
+    border-color:#0b6346
+}
+
+.socials img{
+    width:22px;
+    height:22px
+}
+
+.contact-fab{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    z-index:2000;
+    width:54px;
+    height:54px;
+    border:0;
+    border-radius:18px;
+    background:var(--accent);
+    display:grid;
+    place-items:center;
+    box-shadow:0 15px 35px rgba(16,185,129,.3);
+    cursor:pointer;
+    transition:.25s
+}
+
+.contact-fab:hover{
+    transform:translateY(-4px) rotate(-4deg)
+}
+
+.contact-fab img{
+    width:23px;
+    filter:brightness(0) invert(1)
+}
+
+.contact-menu{
+    position:fixed;
+    bottom:88px;
+    right:22px;
+    z-index:1999;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(12px);
+    transition:.25s
+}
+
+.contact-menu.open{
+    opacity:1;
+    pointer-events:auto;
+    transform:none
+}
+
+.contact-menu a{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    display:grid;
+    place-items:center;
+    box-shadow:var(--shadow)
+}
+
+body.light .contact-menu a{
+    background:#10b981;
+    border-color:#10b981;
+    color:#fff
+}
+
+body.light .contact-menu a:hover{
+    background:#0b6346;
+    border-color:#0b6346;
+    color:#fff
+}
+
+.contact-menu img{
+    width:22px;
+    height:22px
+}
+
+        
 
         footer{width:min(1180px,calc(100% - 40px));margin:auto;padding:25px 0 45px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px}
          .footer-socials{display:flex;align-items:center;gap:7px}
@@ -349,8 +471,15 @@
             .socials{margin-top:22px}
             footer{display:block}
             footer span{display:block;margin-top:8px}
-            .contact-fab{right:14px;bottom:14px}
-            .contact-menu{right:14px;bottom:80px}
+            .contact-fab{
+                right:14px;
+                bottom:14px
+            }
+
+            .contact-menu{
+                right:14px;
+                bottom:80px
+            }
         }
 
         @media(prefers-reduced-motion:reduce){
@@ -442,21 +571,59 @@
 
 <section class="contact-section" id="contact">
     <div class="contact-box">
+
         <div>
-            <div class="section-kicker">GET IN TOUCH</div>
-            <h2 data-fa="بیایید در ارتباط باشیم" data-en="Let’s work together">بیایید در ارتباط باشیم</h2>
-            <p data-fa="برای همکاری، پروژه یا گفت‌وگو از طریق شبکه‌های اجتماعی با من در ارتباط باشید."
-               data-en="For collaborations, projects or a conversation, feel free to reach out through my social channels.">
-               برای همکاری، پروژه یا گفت‌وگو از طریق شبکه‌های اجتماعی با من در ارتباط باشید.
+            <div class="section-kicker">LET'S CONNECT</div>
+
+            <h2
+                data-fa="بیایید چیزی خلق کنیم."
+                data-en="Let’s create something."
+            >
+                بیایید چیزی خلق کنیم.
+            </h2>
+
+            <p
+                data-fa="برای همکاری، پروژه یا گفت‌وگو درباره طراحی با من در ارتباط باشید."
+                data-en="For collaborations, projects or a design conversation, get in touch."
+            >
+                برای همکاری، پروژه یا گفت‌وگو درباره طراحی با من در ارتباط باشید.
             </p>
         </div>
+
         <div class="socials">
-            <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank" rel="noopener"><img src="../images/behance.svg" alt="Behance"></a>
-            <a href="https://www.instagram.com/mohammadmahdi_naeiji/" target="_blank" rel="noopener"><img src="../images/instagram.svg" alt="Instagram"></a>
-            <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank" rel="noopener"><img src="../images/linkedin.svg" alt="LinkedIn"></a>
+
+            <a
+                href="https://www.behance.net/mohammadmahdi_naeiji"
+                target="_blank"
+                rel="noopener"
+                aria-label="Behance"
+            >
+                <img src="../images/behance.svg" alt="">
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+            >
+                <img src="../images/linkedin.svg" alt="">
+            </a>
+
+            <a
+                href="https://www.instagram.com/mohammadmahdi_naeiji/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+            >
+                <img src="../images/instagram.svg" alt="">
+            </a>
+
         </div>
+
     </div>
 </section>
+
 <footer>
     <div class="footer-socials">
         <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank" rel="noopener"><img src="../images/behance.svg" alt="Behance"></a>
@@ -469,14 +636,44 @@
     </span>
 </footer>
 
-    <div class="contact-menu" id="contactMenu">
-        <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank" rel="noopener" aria-label="Behance"><img src="../images/behance.svg" alt=""></a>
-        <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="../images/linkedin.svg" alt=""></a>
-        <a href="https://www.instagram.com/mohammadmahdi_naeiji/" target="_blank" rel="noopener" aria-label="Instagram"><img src="../images/instagram.svg" alt=""></a>
-    </div>
-    <button class="contact-fab" id="contactFab" aria-label="باز کردن راه‌های ارتباطی">
-        <img src="../images/contact.svg" alt="">
-    </button>
+<div class="contact-menu" id="contactMenu">
+
+    <a
+        href="https://www.behance.net/mohammadmahdi_naeiji"
+        target="_blank"
+        rel="noopener"
+        aria-label="Behance"
+    >
+        <img src="../images/behance.svg" alt="">
+    </a>
+
+    <a
+        href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn"
+    >
+        <img src="../images/linkedin.svg" alt="">
+    </a>
+
+    <a
+        href="https://www.instagram.com/mohammadmahdi_naeiji/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+    >
+        <img src="../images/instagram.svg" alt="">
+    </a>
+
+</div>
+
+<button
+    class="contact-fab"
+    id="contactFab"
+    aria-label="باز کردن راه‌های ارتباطی"
+>
+    <img src="../images/contact.svg" alt="">
+</button>
 
     <div class="toast" id="toast" role="status"></div>
 
@@ -592,9 +789,15 @@
         sections.forEach(section => sectionObserver.observe(section));
 
         /* Contact floating menu */
-        contactFab?.addEventListener("click", () => contactMenu?.classList.toggle("open"));
+        contactFab?.addEventListener("click", () => {
+            contactMenu?.classList.toggle("open");
+        });
+
         document.addEventListener("click", e => {
-            if (!contactFab?.contains(e.target) && !contactMenu?.contains(e.target)) {
+            if (
+                !contactFab?.contains(e.target) &&
+                !contactMenu?.contains(e.target)
+            ) {
                 contactMenu?.classList.remove("open");
             }
         });
@@ -713,9 +916,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       menuBtn.setAttribute('aria-expanded',open);
     });
   }
-  const fab=document.getElementById('contactFab');
-  const menu=document.getElementById('contactMenu');
-  if(fab&&menu) fab.addEventListener('click',()=>menu.classList.toggle('open'));
   const progress=document.getElementById('progress');
   const update=()=>{
     const max=document.documentElement.scrollHeight-window.innerHeight;
