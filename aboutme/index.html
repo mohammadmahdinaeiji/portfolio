@@ -1,4 +1,4 @@
-ً<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -469,12 +469,16 @@
     </span>
 </footer>
 
-<button class="contact-fab" id="contactFab" aria-label="Contact"><img src="../images/contact.svg" alt=""></button>
-<div class="contact-menu" id="contactMenu">
-    <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank" rel="noopener"><img src="../images/behance.svg" alt="Behance"></a>
-    <a href="https://www.instagram.com/mohammadmahdi_naeiji/" target="_blank" rel="noopener"><img src="../images/instagram.svg" alt="Instagram"></a>
-    <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank" rel="noopener"><img src="../images/linkedin.svg" alt="LinkedIn"></a>
-</div>
+    <div class="contact-menu" id="contactMenu">
+        <a href="https://www.behance.net/mohammadmahdi_naeiji" target="_blank" rel="noopener" aria-label="Behance"><img src="../images/behance.svg" alt=""></a>
+        <a href="https://www.linkedin.com/in/mohammad-mahdi-naeiji/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="../images/linkedin.svg" alt=""></a>
+        <a href="https://www.instagram.com/mohammadmahdi_naeiji/" target="_blank" rel="noopener" aria-label="Instagram"><img src="../images/instagram.svg" alt=""></a>
+    </div>
+    <button class="contact-fab" id="contactFab" aria-label="باز کردن راه‌های ارتباطی">
+        <img src="../images/contact.svg" alt="">
+    </button>
+
+    <div class="toast" id="toast" role="status"></div>
 
 <script>
     (() => {
@@ -500,7 +504,7 @@
 
         function updateThemeIcon(){
             if (!themeIcon) return;
-            themeIcon.src = body.classList.contains("light") ? "images/moon.svg" : "images/sun.svg";
+            themeIcon.src = body.classList.contains("light") ? "../images/moon.svg" : "../images/sun.svg";
         }
         updateThemeIcon();
 
