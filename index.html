@@ -321,6 +321,61 @@
         }
         .toast.show{opacity:1;transform:translate(-50%,0)}
 
+
+        /* Portfolio PDF download + initial loading screen */
+        .portfolio-loader{
+            position:fixed;inset:0;z-index:10000;
+            display:flex;align-items:center;justify-content:center;
+            background:var(--bg);
+            opacity:1;visibility:visible;
+            transition:opacity .7s ease,visibility .7s ease,backdrop-filter .7s ease;
+        }
+        .portfolio-loader.is-done{
+            opacity:0;visibility:hidden;pointer-events:none;
+            backdrop-filter:blur(0);
+            -webkit-backdrop-filter:blur(0);
+        }
+        .portfolio-loader-inner{
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            gap:16px;text-align:center;
+        }
+        .portfolio-loader-gif{
+            width:96px;height:96px;object-fit:contain;display:block;
+        }
+        .portfolio-loader-title{
+            margin:0;
+            color:var(--text);
+            font-size:14px;font-weight:600;
+            letter-spacing:.01em;
+        }
+        .portfolio-loader-title-en{
+            direction:ltr;
+            font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+            font-size:13px;font-weight:500;color:var(--muted);
+        }
+
+        .portfolio-download-wrap{
+            display:flex;justify-content:center;
+            margin:32px 0 0;
+        }
+        .portfolio-download{
+            min-height:50px;padding:0 24px;
+            border-radius:14px;
+            display:inline-flex;align-items:center;justify-content:center;gap:10px;
+            border:1px solid var(--accent);
+            background:var(--accent);color:#fff;
+            text-decoration:none;
+            font-size:14px;font-weight:700;
+            box-shadow:0 12px 30px rgba(16,185,129,.18);
+            transition:.25s;
+        }
+        .portfolio-download:hover{
+            transform:translateY(-3px);
+            background:#0b6346;border-color:#0b6346;
+        }
+        .portfolio-download svg{width:18px;height:18px;flex:none}
+        body.loader-active{overflow:hidden}
+
         @media(max-width:900px){
             .nav-links{display:none}
             .menu-btn{display:grid}
@@ -376,7 +431,16 @@
     </style>
 </head>
 
-<body>
+<body class="loader-active">
+
+    <div class="portfolio-loader" id="portfolioLoader" aria-hidden="true">
+        <div class="portfolio-loader-inner">
+            <img class="portfolio-loader-gif" id="portfolioLoaderGif" src="images/maintenance.gif" alt="">
+            <p class="portfolio-loader-title" id="portfolioLoaderTitle">محمد مهدی نائیجی پورتفولیو</p>
+            <p class="portfolio-loader-title portfolio-loader-title-en">Mohammadmahdi Naeiji Portfolio</p>
+        </div>
+    </div>
+
     <div class="progress" id="progress"></div>
 
     <header class="site-nav" id="siteNav">
@@ -552,6 +616,26 @@
 
                 <div class="empty-state" id="emptyState">پروژه‌ای با این مشخصات پیدا نشد.</div>
             </div>
+
+            <div class="portfolio-download-wrap">
+                <a
+                    class="portfolio-download"
+                    href="https://mohammadmahdinaeiji.ir/portfolio.m.naeiji.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    download
+                    data-fa="دانلود نسخه کامل PDF"
+                    data-en="Download Full PDF Version"
+                    aria-label="Download full PDF portfolio"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>دانلود نسخه کامل PDF</span>
+                </a>
+            </div>
         </section>
 
         <section class="contact-section" id="contact">
@@ -608,6 +692,33 @@
         const contactFab = document.getElementById("contactFab");
         const contactMenu = document.getElementById("contactMenu");
         const toast = document.getElementById("toast");
+
+
+        /* Initial maintenance GIF loader */
+        const portfolioLoader = document.getElementById("portfolioLoader");
+        const portfolioLoaderGif = document.getElementById("portfolioLoaderGif");
+
+        function finishPortfolioLoader(){
+            if (!portfolioLoader || portfolioLoader.classList.contains("is-done")) return;
+            portfolioLoader.classList.add("is-done");
+            body.classList.remove("loader-active");
+            setTimeout(() => portfolioLoader.remove(), 800);
+        }
+
+        if (portfolioLoaderGif) {
+            portfolioLoaderGif.addEventListener("load", () => {
+                // GIF duration is read from its natural animation; fallback keeps the page usable.
+                const fallback = setTimeout(finishPortfolioLoader, 100000);
+                portfolioLoaderGif.addEventListener("error", () => {
+                    clearTimeout(fallback);
+                    finishPortfolioLoader();
+                }, {once:true});
+            }, {once:true});
+            // If the GIF cannot be loaded at all.
+            portfolioLoaderGif.addEventListener("error", finishPortfolioLoader, {once:true});
+        } else {
+            finishPortfolioLoader();
+        }
 
         /* Theme — persisted locally */
         const savedTheme = localStorage.getItem("portfolio-theme");
@@ -783,6 +894,20 @@
             filters.forEach((button, i) => {
                 button.textContent = (safeLang === "fa" ? filterFa : filterEn)[i];
             });
+
+
+            const downloadButton = document.querySelector(".portfolio-download span");
+            if (downloadButton) {
+                downloadButton.textContent = safeLang === "fa"
+                    ? "دانلود نسخه کامل PDF"
+                    : "Download Full PDF Version";
+            }
+            const loaderTitle = document.getElementById("portfolioLoaderTitle");
+            if (loaderTitle) {
+                loaderTitle.textContent = safeLang === "fa"
+                    ? "محمد مهدی نائیجی پورتفولیو"
+                    : "Mohammadmahdi Naeiji Portfolio";
+            }
 
             document.documentElement.lang = safeLang;
             document.documentElement.dir = safeLang === "fa" ? "rtl" : "ltr";
