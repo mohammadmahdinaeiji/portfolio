@@ -708,7 +708,7 @@
         if (portfolioLoaderGif) {
             portfolioLoaderGif.addEventListener("load", () => {
                 // GIF duration is read from its natural animation; fallback keeps the page usable.
-                const fallback = setTimeout(finishPortfolioLoader, 100000);
+                const fallback = setTimeout(finishPortfolioLoader, 2600);
                 portfolioLoaderGif.addEventListener("error", () => {
                     clearTimeout(fallback);
                     finishPortfolioLoader();
