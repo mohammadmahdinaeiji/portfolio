@@ -374,6 +374,67 @@
             background:#0b6346;border-color:#0b6346;
         }
         .portfolio-download svg{width:18px;height:18px;flex:none}
+
+        /* PDF download options modal */
+        .pdf-options-overlay{
+            position:fixed;inset:0;z-index:9000;
+            display:flex;align-items:center;justify-content:center;
+            padding:20px;background:rgba(0,0,0,.62);
+            backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+            opacity:0;visibility:hidden;pointer-events:none;
+            transition:opacity .3s ease,visibility .3s ease;
+        }
+        .pdf-options-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+        .pdf-options-box{
+            width:min(460px,100%);position:relative;
+            padding:26px;border:1px solid var(--line);
+            border-radius:24px;background:var(--surface);
+            box-shadow:var(--shadow);
+            transform:translateY(14px) scale(.98);
+            transition:transform .3s ease;
+        }
+        .pdf-options-overlay.open .pdf-options-box{transform:none}
+        .pdf-options-close{
+            position:absolute;top:15px;left:15px;
+            width:36px;height:36px;border:1px solid var(--line);
+            border-radius:11px;background:var(--surface-2);
+            color:var(--text);font-size:20px;line-height:1;
+            cursor:pointer;display:grid;place-items:center;
+        }
+        .pdf-options-title{
+            margin:0 38px 6px 0;font-size:21px;font-weight:800;
+        }
+        .pdf-options-desc{
+            margin:0 0 18px;color:var(--muted);font-size:12px;line-height:1.8;
+        }
+        .pdf-option{
+            display:flex;align-items:center;gap:13px;
+            width:100%;padding:15px 16px;margin-top:10px;
+            border:1px solid var(--line);border-radius:16px;
+            background:var(--surface-2);color:var(--text);
+            text-decoration:none;transition:.25s;
+        }
+        .pdf-option:hover{
+            transform:translateY(-2px);
+            border-color:rgba(16,185,129,.55);
+            background:var(--surface);
+        }
+        .pdf-option-icon{
+            width:42px;height:42px;flex:none;border-radius:13px;
+            display:grid;place-items:center;background:var(--accent);
+            color:#fff;
+        }
+        .pdf-option-icon svg{width:20px;height:20px}
+        .pdf-option-copy{min-width:0;display:flex;flex-direction:column;gap:3px}
+        .pdf-option-title{font-size:14px;font-weight:700}
+        .pdf-option-size{font-size:11px;color:var(--muted)}
+        .pdf-option-size::before{
+            content:"✓";display:inline-grid;place-items:center;
+            width:16px;height:16px;margin-left:5px;
+            border-radius:50%;background:rgba(16,185,129,.15);
+            color:var(--accent);font-size:10px;font-weight:800;
+        }
+        body.light .pdf-options-overlay{background:rgba(10,12,15,.38)}
         body.loader-active{overflow:hidden}
 
         @media(max-width:900px){
@@ -618,15 +679,13 @@
             </div>
 
             <div class="portfolio-download-wrap">
-                <a
+                <button
                     class="portfolio-download"
-                    href="https://mohammadmahdinaeiji.ir/portfolio.m.naeiji.pdf"
-                    target="_blank"
-                    rel="noopener"
-                    download
+                    id="portfolioDownload"
+                    type="button"
                     data-fa="دانلود نسخه کامل PDF"
                     data-en="Download Full PDF Version"
-                    aria-label="Download full PDF portfolio"
+                    aria-label="Download PDF portfolio options"
                 >
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"
@@ -634,7 +693,7 @@
                               stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span>دانلود نسخه کامل PDF</span>
-                </a>
+                </button>
             </div>
         </section>
 
@@ -665,6 +724,50 @@
 
     <div class="toast" id="toast" role="status"></div>
 
+    <div class="pdf-options-overlay" id="pdfOptionsOverlay" aria-hidden="true">
+        <div class="pdf-options-box" role="dialog" aria-modal="true" aria-labelledby="pdfOptionsTitle">
+            <button class="pdf-options-close" id="pdfOptionsClose" type="button" aria-label="بستن">×</button>
+            <h3 class="pdf-options-title" id="pdfOptionsTitle">انتخاب نسخه PDF</h3>
+            <p class="pdf-options-desc">نسخه موردنظر خود را برای مشاهده یا دانلود انتخاب کنید.</p>
+
+            <a class="pdf-option" href="https://drive.google.com/file/d/1d1wtQn3_0hz-o4kgmiNwB9FaHHrmak1j/view?usp=drive_link" target="_blank" rel="noopener">
+                <span class="pdf-option-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="pdf-option-copy">
+                    <span class="pdf-option-title">دانلود نسخه با کیفیت</span>
+                    <span class="pdf-option-size">زیر ۸۰ مگابایت</span>
+                </span>
+            </a>
+
+            <a class="pdf-option" href="https://drive.google.com/file/d/1OEBVCFaG8uaMnqghfPpW03yKqZuiXDn5/view?usp=drive_link" target="_blank" rel="noopener">
+                <span class="pdf-option-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="pdf-option-copy">
+                    <span class="pdf-option-title">دانلود نسخه فشرده شده</span>
+                    <span class="pdf-option-size">زیر ۱۵ مگابایت</span>
+                </span>
+            </a>
+
+            <a class="pdf-option" href="https://drive.google.com/file/d/1iY5PP6Gnuh_DtGrwCX23jH_YMaPcmK39/view?usp=drive_link" target="_blank" rel="noopener">
+                <span class="pdf-option-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="pdf-option-copy">
+                    <span class="pdf-option-title">دانلود CV</span>
+                    <span class="pdf-option-size">زیر ۴ مگابایت</span>
+                </span>
+            </a>
+        </div>
+    </div>
+
     <footer>
         <span data-fa="© 1405 محمدمهدی نائیجی. کلیه حقوق محفوظ است." data-en="© 2026 Mohammadmahdi Naeiji. All rights reserved.">© 1405 محمدمهدی نائیجی. کلیه حقوق محفوظ است.</span>
         <div class="footer-socials" aria-label="Social links">
@@ -693,6 +796,30 @@
         const contactMenu = document.getElementById("contactMenu");
         const toast = document.getElementById("toast");
 
+        /* PDF download options */
+        const portfolioDownload = document.getElementById("portfolioDownload");
+        const pdfOptionsOverlay = document.getElementById("pdfOptionsOverlay");
+        const pdfOptionsClose = document.getElementById("pdfOptionsClose");
+
+        function closePdfOptions(){
+            if (!pdfOptionsOverlay) return;
+            pdfOptionsOverlay.classList.remove("open");
+            pdfOptionsOverlay.setAttribute("aria-hidden","true");
+            body.classList.remove("loader-active");
+        }
+
+        portfolioDownload?.addEventListener("click", () => {
+            if (!pdfOptionsOverlay) return;
+            pdfOptionsOverlay.classList.add("open");
+            pdfOptionsOverlay.setAttribute("aria-hidden","false");
+        });
+
+        pdfOptionsClose?.addEventListener("click", closePdfOptions);
+
+        pdfOptionsOverlay?.addEventListener("click", e => {
+            if (e.target === pdfOptionsOverlay) closePdfOptions();
+        });
+
 
         /* Initial maintenance GIF loader */
         const portfolioLoader = document.getElementById("portfolioLoader");
@@ -707,13 +834,61 @@
 
         if (portfolioLoaderGif) {
             portfolioLoaderGif.addEventListener("load", () => {
-                // GIF duration is read from its natural animation; fallback keeps the page usable.
-                const fallback = setTimeout(finishPortfolioLoader, 2600);
-                portfolioLoaderGif.addEventListener("error", () => {
-                    clearTimeout(fallback);
-                    finishPortfolioLoader();
-                }, {once:true});
+                /*
+                 * The loader is dismissed by the GIF itself, not by a fixed timer.
+                 * GIF playback cannot reliably expose its duration through <img>,
+                 * so the GIF is replayed once and the next frame is detected by
+                 * comparing the rendered image after each animation cycle.
+                 * For browsers where frame timing cannot be observed, the loader
+                 * remains visible rather than ending at an arbitrary time.
+                 */
+                let lastFrame = "";
+                let stableFrames = 0;
+
+                const checkGifEnd = () => {
+                    if (!portfolioLoaderGif.isConnected) return;
+
+                    try {
+                        const canvas = document.createElement("canvas");
+                        const ctx = canvas.getContext("2d", {willReadFrequently:true});
+                        const w = portfolioLoaderGif.naturalWidth;
+                        const h = portfolioLoaderGif.naturalHeight;
+
+                        if (!ctx || !w || !h) return;
+
+                        canvas.width = Math.min(w, 120);
+                        canvas.height = Math.max(1, Math.round(h * (canvas.width / w)));
+                        ctx.drawImage(portfolioLoaderGif, 0, 0, canvas.width, canvas.height);
+
+                        const frame = canvas.toDataURL("image/png");
+
+                        if (frame === lastFrame) {
+                            stableFrames++;
+                        } else {
+                            stableFrames = 0;
+                            lastFrame = frame;
+                        }
+
+                        /*
+                         * When the GIF reaches its final frame and holds it,
+                         * the rendered frame remains unchanged. A short stable
+                         * period prevents the loader from disappearing because
+                         * of a single repeated frame during the animation.
+                         */
+                        if (stableFrames >= 8) {
+                            finishPortfolioLoader();
+                            return;
+                        }
+                    } catch (_) {
+                        return;
+                    }
+
+                    requestAnimationFrame(checkGifEnd);
+                };
+
+                requestAnimationFrame(checkGifEnd);
             }, {once:true});
+
             // If the GIF cannot be loaded at all.
             portfolioLoaderGif.addEventListener("error", finishPortfolioLoader, {once:true});
         } else {
@@ -830,6 +1005,7 @@
             if (e.key === "Escape") {
                 contactMenu?.classList.remove("open");
                 search?.blur();
+                closePdfOptions();
             }
         });
 
@@ -902,6 +1078,29 @@
                     ? "دانلود نسخه کامل PDF"
                     : "Download Full PDF Version";
             }
+
+            const pdfOptionsTitle = document.getElementById("pdfOptionsTitle");
+            const pdfOptionsDesc = document.querySelector(".pdf-options-desc");
+            const pdfOptionTitles = document.querySelectorAll(".pdf-option-title");
+            const pdfOptionSizes = document.querySelectorAll(".pdf-option-size");
+            if (pdfOptionsTitle) {
+                pdfOptionsTitle.textContent = safeLang === "fa" ? "انتخاب نسخه PDF" : "Choose PDF Version";
+            }
+            if (pdfOptionsDesc) {
+                pdfOptionsDesc.textContent = safeLang === "fa"
+                    ? "نسخه موردنظر خود را برای مشاهده یا دانلود انتخاب کنید."
+                    : "Choose the version you want to view or download.";
+            }
+            const optionTitlesFa = ["دانلود نسخه با کیفیت","دانلود نسخه فشرده شده","دانلود CV"];
+            const optionTitlesEn = ["Download High-Quality Version","Download Compressed Version","Download CV"];
+            const optionSizesFa = ["زیر ۸۰ مگابایت","زیر ۱۵ مگابایت","زیر ۴ مگابایت"];
+            const optionSizesEn = ["Under 80 MB","Under 15 MB","Under 4 MB"];
+            pdfOptionTitles.forEach((el,i) => {
+                el.textContent = (safeLang === "fa" ? optionTitlesFa : optionTitlesEn)[i];
+            });
+            pdfOptionSizes.forEach((el,i) => {
+                el.textContent = (safeLang === "fa" ? optionSizesFa : optionSizesEn)[i];
+            });
             const loaderTitle = document.getElementById("portfolioLoaderTitle");
             if (loaderTitle) {
                 loaderTitle.textContent = safeLang === "fa"
