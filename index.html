@@ -832,64 +832,129 @@
             setTimeout(() => portfolioLoader.remove(), 800);
         }
 
-        if (portfolioLoaderGif) {
-            portfolioLoaderGif.addEventListener("load", () => {
-                /*
-                 * The loader is dismissed by the GIF itself, not by a fixed timer.
-                 * GIF playback cannot reliably expose its duration through <img>,
-                 * so the GIF is replayed once and the next frame is detected by
-                 * comparing the rendered image after each animation cycle.
-                 * For browsers where frame timing cannot be observed, the loader
-                 * remains visible rather than ending at an arbitrary time.
-                 */
-                let lastFrame = "";
-                let stableFrames = 0;
+        /*
+         * GIFs do not expose their animation duration through <img>.
+         * Instead of watching the rendered frames (which is unreliable on
+         * mobile Safari/Chrome and especially with looping GIFs), read the
+         * GIF's frame delays directly from its binary data. This gives us the
+         * exact duration of one complete GIF cycle, then we wait 2 seconds.
+         */
+        async function getGifDuration(src){
+            const response = await fetch(src, {cache:"force-cache"});
+            if (!response.ok) throw new Error("GIF could not be loaded");
 
-                const checkGifEnd = () => {
-                    if (!portfolioLoaderGif.isConnected) return;
+            const buffer = await response.arrayBuffer();
+            const bytes = new Uint8Array(buffer);
 
-                    try {
-                        const canvas = document.createElement("canvas");
-                        const ctx = canvas.getContext("2d", {willReadFrequently:true});
-                        const w = portfolioLoaderGif.naturalWidth;
-                        const h = portfolioLoaderGif.naturalHeight;
+            if (bytes.length < 13 ||
+                String.fromCharCode(...bytes.slice(0,6)) !== "GIF89a" &&
+                String.fromCharCode(...bytes.slice(0,6)) !== "GIF87a") {
+                throw new Error("Invalid GIF");
+            }
 
-                        if (!ctx || !w || !h) return;
+            const view = new DataView(buffer);
+            let pos = 13;
+            let packed = bytes[10];
 
-                        canvas.width = Math.min(w, 120);
-                        canvas.height = Math.max(1, Math.round(h * (canvas.width / w)));
-                        ctx.drawImage(portfolioLoaderGif, 0, 0, canvas.width, canvas.height);
+            // Global Color Table
+            if (packed & 0x80) {
+                pos += 3 * (1 << ((packed & 0x07) + 1));
+            }
 
-                        const frame = canvas.toDataURL("image/png");
+            let duration = 0;
+            let pendingDelay = 0;
 
-                        if (frame === lastFrame) {
-                            stableFrames++;
-                        } else {
-                            stableFrames = 0;
-                            lastFrame = frame;
+            while (pos < bytes.length) {
+                const block = bytes[pos++];
+
+                // Trailer = end of GIF data.
+                if (block === 0x3B) break;
+
+                // Extension block.
+                if (block === 0x21) {
+                    if (pos >= bytes.length) break;
+                    const label = bytes[pos++];
+
+                    // Graphic Control Extension: its delay applies to the next frame.
+                    if (label === 0xF9) {
+                        if (pos + 5 > bytes.length) break;
+                        const size = bytes[pos++];
+                        if (size !== 4) break;
+                        pos++; // packed fields
+                        pendingDelay = view.getUint16(pos, true) * 10;
+                        pos += 2;
+                        pos++; // transparent color index
+                        pos++; // block terminator
+                    } else {
+                        // Skip extension sub-blocks.
+                        while (pos < bytes.length) {
+                            const size = bytes[pos++];
+                            if (size === 0) break;
+                            pos += size;
                         }
+                    }
+                    continue;
+                }
 
-                        /*
-                         * When the GIF reaches its final frame and holds it,
-                         * the rendered frame remains unchanged. A short stable
-                         * period prevents the loader from disappearing because
-                         * of a single repeated frame during the animation.
-                         */
-                        if (stableFrames >= 8) {
-                            finishPortfolioLoader();
-                            return;
-                        }
-                    } catch (_) {
-                        return;
+                // Image Descriptor = one animation frame.
+                if (block === 0x2C) {
+                    if (pos + 9 > bytes.length) break;
+                    pos += 8;
+                    packed = bytes[pos++];
+
+                    // Local Color Table.
+                    if (packed & 0x80) {
+                        pos += 3 * (1 << ((packed & 0x07) + 1));
                     }
 
-                    requestAnimationFrame(checkGifEnd);
-                };
+                    // LZW minimum code size.
+                    if (pos >= bytes.length) break;
+                    pos++;
 
-                requestAnimationFrame(checkGifEnd);
-            }, {once:true});
+                    // Image data sub-blocks.
+                    while (pos < bytes.length) {
+                        const size = bytes[pos++];
+                        if (size === 0) break;
+                        pos += size;
+                    }
 
-            // If the GIF cannot be loaded at all.
+                    duration += pendingDelay || 100;
+                    pendingDelay = 0;
+                    continue;
+                }
+
+                // Unknown block: stop safely.
+                break;
+            }
+
+            if (!duration) throw new Error("GIF duration could not be detected");
+            return duration;
+        }
+
+        if (portfolioLoaderGif) {
+            const startLoader = async () => {
+                try {
+                    const gifDuration = await getGifDuration(portfolioLoaderGif.currentSrc || portfolioLoaderGif.src);
+                    window.__portfolioLoaderFinishTimer = setTimeout(
+                        finishPortfolioLoader,
+                        gifDuration + 2000
+                    );
+                } catch (_) {
+                    // If binary duration detection fails, use the browser's
+                    // image load as a safe fallback rather than leaving the page stuck.
+                    window.__portfolioLoaderFinishTimer = setTimeout(
+                        finishPortfolioLoader,
+                        4000
+                    );
+                }
+            };
+
+            if (portfolioLoaderGif.complete && portfolioLoaderGif.naturalWidth) {
+                startLoader();
+            } else {
+                portfolioLoaderGif.addEventListener("load", startLoader, {once:true});
+            }
+
             portfolioLoaderGif.addEventListener("error", finishPortfolioLoader, {once:true});
         } else {
             finishPortfolioLoader();
