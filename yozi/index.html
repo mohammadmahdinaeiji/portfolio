@@ -854,6 +854,8 @@ body.light .contact-menu a:hover{
     .project-description h2{margin-bottom:28px}
     .process-item p{font-size:13px;line-height:2}
     .video-play-main{width:58px;height:58px;font-size:20px}
+    /* On mobile, show the large center play button only before the first play. */
+    .video-player.mobile-started .video-overlay{opacity:0;pointer-events:none}
     .video-controls{padding:28px 10px 10px}
     .video-volume{width:52px}
     .video-time{min-width:70px;font-size:10px}
@@ -1237,6 +1239,7 @@ body.light .contact-menu a:hover{
     video?.addEventListener("loadedmetadata", updateVideoUI);
     video?.addEventListener("timeupdate", updateVideoUI);
     video?.addEventListener("play", () => {
+        player.classList.add("mobile-started");
         updateVideoUI();
         if (progressFrame === null) progressFrame = requestAnimationFrame(smoothProgress);
     });
