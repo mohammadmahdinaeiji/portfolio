@@ -694,6 +694,7 @@ body.light .contact-menu a:hover{
     transform:none;
 }
 .video-progress{
+    direction:ltr;
     width:100%;
     height:4px;
     margin:0 0 11px;
@@ -1192,10 +1193,12 @@ body.light .contact-menu a:hover{
         return `${mins}:${secs}`;
     }
 
+    let progressFrame = null;
+
     function updateVideoUI(){
         const ratio = video.duration ? (video.currentTime / video.duration) * 100 : 0;
-        progressBar.value = ratio;
-        timeLabel.textContent =
+        if (progressBar) progressBar.value = ratio;
+        if (timeLabel) timeLabel.textContent =
             `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
 
         const paused = video.paused;
@@ -1203,6 +1206,15 @@ body.light .contact-menu a:hover{
         player.classList.toggle("is-paused", paused);
         playBtn.textContent = paused ? "▶" : "❚❚";
         mainPlay.textContent = paused ? "▶" : "❚❚";
+    }
+
+    function smoothProgress(){
+        updateVideoUI();
+        if (!video.paused && !video.ended) {
+            progressFrame = requestAnimationFrame(smoothProgress);
+        } else {
+            progressFrame = null;
+        }
     }
 
     async function togglePlay(){
@@ -1224,9 +1236,20 @@ body.light .contact-menu a:hover{
 
     video?.addEventListener("loadedmetadata", updateVideoUI);
     video?.addEventListener("timeupdate", updateVideoUI);
-    video?.addEventListener("play", updateVideoUI);
-    video?.addEventListener("pause", updateVideoUI);
-    video?.addEventListener("ended", updateVideoUI);
+    video?.addEventListener("play", () => {
+        updateVideoUI();
+        if (progressFrame === null) progressFrame = requestAnimationFrame(smoothProgress);
+    });
+    video?.addEventListener("pause", () => {
+        if (progressFrame !== null) cancelAnimationFrame(progressFrame);
+        progressFrame = null;
+        updateVideoUI();
+    });
+    video?.addEventListener("ended", () => {
+        if (progressFrame !== null) cancelAnimationFrame(progressFrame);
+        progressFrame = null;
+        updateVideoUI();
+    });
 
     progressBar?.addEventListener("input", () => {
         if (!video.duration) return;
