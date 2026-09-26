@@ -652,51 +652,14 @@ body.light .contact-menu a:hover{
     line-height:2.15;
     text-align:justify;
 }
-.previous-project{
-    width:min(1000px,calc(100% - 40px));
-    margin:0 auto 80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:16px;
-    flex-wrap:nowrap;
-}
-.previous-project a{
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-    padding:14px 18px;
-    border:1px solid var(--line);
-    border-radius:15px;
-    background:var(--surface);
-    text-decoration:none;
-    color:var(--text);
-    font-size:13px;
-    transition:.25s;
-}
-.previous-project a:hover{
-    transform:translateY(-3px);
-    border-color:rgba(16,185,129,.5);
-    background:var(--surface-2);
-}
-.previous-project small{
-    color:var(--muted);
-    font-size:11px;
-}
+.next-page{width:min(1180px,calc(100% - 40px));margin:0 auto 70px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.next-page a{display:inline-flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);border-radius:15px;background:var(--surface);text-decoration:none;transition:.25s}
+.next-page a:hover{transform:translateY(-3px);border-color:rgba(16,185,129,.5);background:var(--surface-2)}
+.next-page small{color:var(--muted);font-size:11px}
 @media(max-width:600px){
-    .previous-project{
-        width:calc(100% - 28px);
-        gap:8px;
-    }
-    .previous-project a{
-        min-width:0;
-        flex:1;
-        padding:12px 10px;
-        gap:7px;
-        font-size:11px;
-        justify-content:center;
-    }
-    .previous-project small{font-size:9px}
+    .next-page{width:calc(100% - 28px);gap:8px}
+    .next-page a{min-width:0;flex:1;padding:12px 10px;gap:7px;font-size:11px;justify-content:center}
+    .next-page small{font-size:9px}
     .project-page{padding-top:calc(var(--nav-h) + 20px)}
     .project-header,.project-content,.previous-project{
         width:calc(100% - 28px);
@@ -846,15 +809,15 @@ body.light .contact-menu a:hover{
         </article>
     </section>
 
-    <div class="previous-project">
-        <a href="https://mohammadmahdinaeiji.ir/yozi/">
-            <span data-fa="پروژه قبلی" data-en="Previous project">پروژه قبلی</span>
-            <small>یوزی / Yozi</small>
-            <span>↗</span>
-        </a>
+    <div class="next-page">
         <a href="https://mohammadmahdinaeiji.ir/duckland/">
-            <span data-fa="پروژه بعدی" data-en="Next project">پروژه بعدی</span>
+            <span data-fa="پروژه قبلی" data-en="Previous project">پروژه قبلی</span>
             <small>داکلند / Duckland</small>
+            <span>↙</span>
+        </a>
+        <a href="https://mohammadmahdinaeiji.ir/yozi/">
+            <span data-fa="پروژه بعدی" data-en="Next project">پروژه بعدی</span>
+            <small>یوزی / Yozi</small>
             <span>↗</span>
         </a>
     </div>
