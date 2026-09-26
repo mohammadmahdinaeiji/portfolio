@@ -991,8 +991,10 @@
 
         /*
          * GIFs do not expose their animation duration through <img>.
-         * Read the frame delays directly from the GIF binary so the loader
-         * can finish after exactly one complete animation cycle.
+         * Instead of watching the rendered frames (which is unreliable on
+         * mobile Safari/Chrome and especially with looping GIFs), read the
+         * GIF's frame delays directly from its binary data. This gives us the
+         * exact duration of one complete GIF cycle, then we wait 2 seconds.
          */
         async function getGifDuration(src){
             const response = await fetch(src, {cache:"force-cache"});
@@ -1087,13 +1089,21 @@
         }
 
         if (portfolioLoaderGif) {
-            const startLoader = () => {
-                // Fixed duration: 2 seconds.
-                // This prevents a looping GIF from keeping the loader on screen.
-                window.__portfolioLoaderFinishTimer = setTimeout(
-                    finishPortfolioLoader,
-                    2000
-                );
+            const startLoader = async () => {
+                try {
+                    const gifDuration = await getGifDuration(portfolioLoaderGif.currentSrc || portfolioLoaderGif.src);
+                    window.__portfolioLoaderFinishTimer = setTimeout(
+                        finishPortfolioLoader,
+                        gifDuration + 2000
+                    );
+                } catch (_) {
+                    // If binary duration detection fails, use the browser's
+                    // image load as a safe fallback rather than leaving the page stuck.
+                    window.__portfolioLoaderFinishTimer = setTimeout(
+                        finishPortfolioLoader,
+                        4000
+                    );
+                }
             };
 
             if (portfolioLoaderGif.complete && portfolioLoaderGif.naturalWidth) {
