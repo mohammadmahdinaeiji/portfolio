@@ -1087,21 +1087,13 @@
         }
 
         if (portfolioLoaderGif) {
-            const startLoader = async () => {
-                try {
-                    const gifDuration = await getGifDuration(portfolioLoaderGif.currentSrc || portfolioLoaderGif.src);
-                    window.__portfolioLoaderFinishTimer = setTimeout(
-                        finishPortfolioLoader,
-                        gifDuration
-                    );
-                } catch (_) {
-                    // If binary duration detection fails, use the browser's
-                    // image load as a safe fallback rather than leaving the page stuck.
-                    window.__portfolioLoaderFinishTimer = setTimeout(
-                        finishPortfolioLoader,
-                        4000
-                    );
-                }
+            const startLoader = () => {
+                // Fixed duration: 2 seconds.
+                // This prevents a looping GIF from keeping the loader on screen.
+                window.__portfolioLoaderFinishTimer = setTimeout(
+                    finishPortfolioLoader,
+                    2000
+                );
             };
 
             if (portfolioLoaderGif.complete && portfolioLoaderGif.naturalWidth) {
