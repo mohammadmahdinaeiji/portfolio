@@ -525,7 +525,7 @@
   bottom: 24px;
   transform: translateX(-50%) translateY(18px);
   width: min(680px, calc(100vw - 32px));
-  z-index: 2147483647;
+  z-index: 2147483647 !important;
   padding: 16px 20px;
   border: 1px solid rgba(255, 196, 0, .55);
   border-radius: 16px;
@@ -737,11 +737,11 @@
                     </div>
                 </a>
 
-                <a class="project-card" data-categories="typography,illustration" data-search="تایپوگرافی typography poster logotype font" href="https://mohammadmahdinaeiji.github.io/portfolio/typography">
+                <a class="project-card" data-categories="editorial" data-search="تایپوگرافی typography poster logotype font" href="https://mohammadmahdinaeiji.github.io/portfolio/typography">
                     <img src="images/typography.webp" alt="Typography / تایپوگرافی" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category">TYPE · ILLUSTRATION</span><span class="card-index">07</span></div>
+                        <div class="card-meta"><span class="card-category">EDITORIAL</span><span class="card-index">07</span></div>
                         <span class="card-title" data-fa="تایپوگرافی" data-en="Typography">تایپوگرافی</span>
                         <span class="card-subtitle" data-fa="طراحی تایپوگرافی، پوستر و لوگوتایپ" data-en="Typography & Logotype">طراحی تایپوگرافی، پوستر و لوگوتایپ</span>
                     </div>
@@ -960,6 +960,27 @@
         const pdfOptionsOverlay = document.getElementById("pdfOptionsOverlay");
         const pdfOptionsClose = document.getElementById("pdfOptionsClose");
 
+        const pdfVersionNotice = document.getElementById("pdfVersionNotice");
+
+        function setPdfVersionNotice(show){
+            if (!pdfVersionNotice) return;
+            clearTimeout(window.__pdfNoticeTimer);
+
+            pdfVersionNotice.classList.toggle("show", show);
+            pdfVersionNotice.setAttribute("aria-hidden", String(!show));
+
+            if (show) {
+                window.__pdfNoticeTimer = setTimeout(() => {
+                    pdfVersionNotice.classList.remove("show");
+                    pdfVersionNotice.setAttribute("aria-hidden", "true");
+                }, 3000);
+            }
+        }
+
+        function showPdfVersionNotice(){
+            setPdfVersionNotice(true);
+        }
+
         function closePdfOptions(){
             if (!pdfOptionsOverlay) return;
             pdfOptionsOverlay.classList.remove("open");
@@ -973,12 +994,7 @@
             pdfOptionsOverlay.classList.add("open");
             pdfOptionsOverlay.setAttribute("aria-hidden","false");
 
-            if (toast) {
-                toast.textContent = document.documentElement.lang === "en"
-                    ? "This PDF version does not include some of the latest project updates. For the most up-to-date work, please use the website."
-                    : "این نسخه PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید.";
-                toast.classList.add("show", "persistent");
-            }
+            showPdfVersionNotice();
         });
 
         pdfOptionsClose?.addEventListener("click", closePdfOptions);
@@ -1334,6 +1350,13 @@ const filterEn = ["All","Branding","Illustration","AI","Editorial","Mascot / Cha
             pdfOptionSizes.forEach((el,i) => {
                 el.textContent = (safeLang === "fa" ? optionSizesFa : optionSizesEn)[i];
             });
+            if (pdfVersionNotice) {
+                const noticeTargets = pdfVersionNotice.querySelectorAll("[data-fa][data-en]");
+                noticeTargets.forEach(el => {
+                    el.innerHTML = el.dataset[safeLang] || el.innerHTML;
+                });
+            }
+
             const loaderTitle = document.getElementById("portfolioLoaderTitle");
             if (loaderTitle) {
                 loaderTitle.textContent = safeLang === "fa"
