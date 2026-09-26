@@ -271,6 +271,36 @@
         .project-card.is-hidden{display:none}
         .empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);display:none}
 
+        /* Blog */
+        .blog-section{width:min(1180px,calc(100% - 40px));margin:0 auto 100px}
+        .blog-empty{
+            border:1px solid var(--line);border-radius:28px;background:
+            linear-gradient(135deg,rgba(16,185,129,.08),transparent 60%),var(--surface);
+            padding:70px 30px;text-align:center;position:relative;overflow:hidden;
+        }
+        .blog-empty::before,.blog-empty::after{
+            content:"";position:absolute;border:1px solid var(--line);border-radius:50%;pointer-events:none;
+        }
+        .blog-empty::before{width:220px;height:220px;right:-80px;top:-100px}
+        .blog-empty::after{width:150px;height:150px;left:-55px;bottom:-75px}
+        .blog-empty-icon{
+            width:62px;height:62px;margin:0 auto 20px;border-radius:18px;
+            display:grid;place-items:center;background:var(--surface-2);
+            border:1px solid var(--line);font-size:25px;
+        }
+        .blog-empty h3{margin:0 0 10px;font-size:24px;font-weight:800}
+        .blog-empty p{margin:0 auto;color:var(--muted);font-size:13px;line-height:1.9;max-width:460px}
+        .blog-card-template{
+            display:none;
+            position:relative;overflow:hidden;border:1px solid var(--line);
+            border-radius:22px;background:var(--surface);min-height:260px;
+        }
+        .blog-card-template img{width:100%;height:180px;object-fit:cover;display:block}
+        .blog-card-template .blog-card-copy{padding:16px}
+        .blog-card-template h3{margin:0;font-size:17px}
+        .blog-card-template p{margin:7px 0 0;color:var(--muted);font-size:11px}
+        .blog-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
         /* Contact */
         .contact-section{width:min(1180px,calc(100% - 40px));margin:0 auto 70px}
         .contact-box{
@@ -456,6 +486,10 @@
             .filter{white-space:nowrap}
         }
 
+        @media(max-width:900px){
+            .blog-card-grid{grid-template-columns:1fr 1fr}
+        }
+
         @media(max-width:600px){
             :root{--nav-h:64px}
             .site-nav{top:9px;right:9px;left:9px;height:64px;border-radius:18px}
@@ -517,6 +551,7 @@
             <nav class="nav-links" id="navLinks" aria-label="Main navigation">
                 <a href="#top" data-section="top">خانه</a>
                 <a href="#work" data-section="work">پروژه‌ها</a>
+                <a href="#blog" data-section="blog">وبلاگ</a>
                 <a href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">درباره من</a>
                 <a href="#contact">تماس</a>
             </nav>
@@ -566,7 +601,7 @@
         </section>
 
         <section class="stats" aria-label="Portfolio highlights">
-            <div class="stat"><strong>08</strong><span data-fa="پروژه منتخب" data-en="Selected projects">پروژه منتخب</span></div>
+            <div class="stat"><strong>11</strong><span data-fa="پروژه منتخب" data-en="Selected projects">پروژه منتخب</span></div>
             <div class="stat"><strong>06</strong><span data-fa="حوزه تخصصی" data-en="Creative disciplines">حوزه تخصصی</span></div>
             <div class="stat"><strong>01</strong><span data-fa="نگاه شخصی به طراحی" data-en="Personal design approach">نگاه شخصی به طراحی</span></div>
         </section>
@@ -590,6 +625,9 @@
                     <button class="filter" data-filter="ai">AI</button>
                     <button class="filter" data-filter="typography">تایپوگرافی</button>
                     <button class="filter" data-filter="editorial">ادیتوریال</button>
+                    <button class="filter" data-filter="mascot">مسکات</button>
+                    <button class="filter" data-filter="boardgame">بازی رومیزی</button>
+                    <button class="filter" data-filter="character">کاراکتر</button>
                 </div>
                 <input class="search" id="search" type="search" placeholder="جست‌وجوی پروژه..." aria-label="جست‌وجوی پروژه">
             </div>
@@ -675,6 +713,37 @@
                     </div>
                 </a>
 
+
+                <a class="project-card" data-category="mascot" data-search="داکلند duckland mascot character design طراحی شخصیت مسکات" href="https://mohammadmahdinaeiji.ir/duckland/" target="_blank" rel="noopener">
+                    <img src="images/duckland.webp" alt="Duckland / داکلند" loading="lazy" decoding="async">
+                    <span class="card-arrow">↗</span>
+                    <div class="card-info">
+                        <div class="card-meta"><span class="card-category">MASCOT</span><span class="card-index">09</span></div>
+                        <span class="card-title" data-fa="داکلند" data-en="Duckland">داکلند</span>
+                        <span class="card-subtitle" data-fa="طراحی شخصیت مسکات" data-en="Mascot Character Design">طراحی شخصیت مسکات</span>
+                    </div>
+                </a>
+
+                <a class="project-card" data-category="boardgame" data-search="گربه های قاجاری گربه‌های قاجاری qajar cats board game digital illustration تصویرسازی برد گیم طراحی دیجیتال" href="https://mohammadmahdinaeiji.ir/qajarcats/" target="_blank" rel="noopener">
+                    <img src="images/qajarcats.webp" alt="Qajar Cats / گربه‌های قاجاری" loading="lazy" decoding="async">
+                    <span class="card-arrow">↗</span>
+                    <div class="card-info">
+                        <div class="card-meta"><span class="card-category">BOARD GAME</span><span class="card-index">10</span></div>
+                        <span class="card-title" data-fa="گربه‌های قاجاری" data-en="Qajar Cats">گربه‌های قاجاری</span>
+                        <span class="card-subtitle" data-fa="تصویرسازی برد گیم · طراحی دیجیتال" data-en="Board Game Illustration · Digital Design">تصویرسازی برد گیم · طراحی دیجیتال</span>
+                    </div>
+                </a>
+
+                <a class="project-card" data-category="character" data-search="یوزی yozi logomotion university university projects character design طراحی کاراکتر لوگوموشن پروژه های دانشگاهی پروژه‌های دانشگاهی" href="https://mohammadmahdinaeiji.ir/yozi/" target="_blank" rel="noopener">
+                    <img src="images/yozi.webp" alt="Yozi / یوزی" loading="lazy" decoding="async">
+                    <span class="card-arrow">↗</span>
+                    <div class="card-info">
+                        <div class="card-meta"><span class="card-category">CHARACTER</span><span class="card-index">11</span></div>
+                        <span class="card-title" data-fa="یوزی" data-en="Yozi">یوزی</span>
+                        <span class="card-subtitle" data-fa="لوگوموشن · پروژه‌های دانشگاهی · طراحی کاراکتر" data-en="Logo Motion · University Projects · Character Design">لوگوموشن · پروژه‌های دانشگاهی · طراحی کاراکتر</span>
+                    </div>
+                </a>
+
                 <div class="empty-state" id="emptyState">پروژه‌ای با این مشخصات پیدا نشد.</div>
             </div>
 
@@ -694,6 +763,52 @@
                     </svg>
                     <span>دانلود نسخه کامل PDF</span>
                 </button>
+            </div>
+        </section>
+
+        <section class="blog-section" id="blog">
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">BLOG</div>
+                    <h2 class="section-title" data-fa="وبلاگ" data-en="Blog">وبلاگ</h2>
+                </div>
+                <p class="section-desc" data-fa="یادداشت‌ها، فرایند طراحی و مطالب مرتبط با تجربه‌های بصری من." data-en="Notes, design process and thoughts from my visual practice.">
+                    یادداشت‌ها، فرایند طراحی و مطالب مرتبط با تجربه‌های بصری من.
+                </p>
+            </div>
+
+            <!-- Blog card design reserved for future posts; intentionally hidden until content is available. -->
+            <div class="blog-card-grid" aria-hidden="true">
+                <article class="blog-card-template">
+                    <img src="images/duckland.webp" alt="">
+                    <div class="blog-card-copy">
+                        <h3>عنوان نوشته</h3>
+                        <p>توضیح کوتاه نوشته</p>
+                    </div>
+                </article>
+                <article class="blog-card-template">
+                    <img src="images/qajarcats.webp" alt="">
+                    <div class="blog-card-copy">
+                        <h3>عنوان نوشته</h3>
+                        <p>توضیح کوتاه نوشته</p>
+                    </div>
+                </article>
+                <article class="blog-card-template">
+                    <img src="images/yozi.webp" alt="">
+                    <div class="blog-card-copy">
+                        <h3>عنوان نوشته</h3>
+                        <p>توضیح کوتاه نوشته</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="blog-empty">
+                <div class="blog-empty-icon">✦</div>
+                <h3 data-fa="نوشته‌ای فعلاً موجود نیست" data-en="No posts yet">نوشته‌ای فعلاً موجود نیست</h3>
+                <p data-fa="این بخش به‌زودی با نوشته‌ها، فرایند طراحی و تجربه‌های من به‌روزرسانی خواهد شد."
+                   data-en="This section will be updated with design notes, process insights and creative experiments soon.">
+                    این بخش به‌زودی با نوشته‌ها، فرایند طراحی و تجربه‌های من به‌روزرسانی خواهد شد.
+                </p>
             </div>
         </section>
 
