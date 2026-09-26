@@ -350,30 +350,6 @@
             box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;font-size:12px
         }
         .toast.show{opacity:1;transform:translate(-50%,0)}
-        .pdf-notice{
-            position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);
-            z-index:7000;width:min(680px,calc(100% - 32px));
-            display:flex;align-items:center;gap:14px;
-            padding:13px 16px 13px 13px;
-            border:1px solid rgba(16,185,129,.35);border-radius:15px;
-            background:rgba(17,20,25,.96);color:var(--text);
-            box-shadow:var(--shadow);backdrop-filter:blur(16px);
-            -webkit-backdrop-filter:blur(16px);
-            opacity:0;visibility:hidden;pointer-events:none;
-            transition:opacity .3s ease,transform .3s ease,visibility .3s ease;
-            font-size:12px;line-height:1.8;
-        }
-        .pdf-notice.show{
-            opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);
-        }
-        .pdf-notice span{flex:1}
-        .pdf-notice button{
-            width:30px;height:30px;flex:none;border:1px solid var(--line);
-            border-radius:9px;background:var(--surface-2);color:var(--text);
-            cursor:pointer;font-size:18px;line-height:1;display:grid;place-items:center;
-        }
-        .pdf-notice button:hover{border-color:rgba(16,185,129,.55);color:var(--accent)}
-        body.light .pdf-notice{background:rgba(255,255,255,.96)}
 
 
         /* Portfolio PDF download + initial loading screen */
@@ -624,6 +600,12 @@
             </div>
         </section>
 
+        <section class="stats" aria-label="Portfolio highlights">
+            <div class="stat"><strong>11</strong><span data-fa="پروژه منتخب" data-en="Selected projects">پروژه منتخب</span></div>
+            <div class="stat"><strong>06</strong><span data-fa="حوزه تخصصی" data-en="Creative disciplines">حوزه تخصصی</span></div>
+            <div class="stat"><strong>01</strong><span data-fa="نگاه شخصی به طراحی" data-en="Personal design approach">نگاه شخصی به طراحی</span></div>
+        </section>
+
         <section class="work" id="work">
             <div class="section-head">
                 <div>
@@ -643,21 +625,19 @@
                     <button class="filter" data-filter="ai">AI</button>
                     <button class="filter" data-filter="typography">تایپوگرافی</button>
                     <button class="filter" data-filter="editorial">ادیتوریال</button>
-                    <button class="filter" data-filter="motion">موشن گرافیک</button>
                     <button class="filter" data-filter="mascot">مسکات</button>
-                    <button class="filter" data-filter="character">طراحی شخصیت</button>
                     <button class="filter" data-filter="boardgame">بازی رومیزی</button>
-                    <button class="filter" data-filter="personal">شخصی</button>
+                    <button class="filter" data-filter="character">کاراکتر</button>
                 </div>
                 <input class="search" id="search" type="search" placeholder="جست‌وجوی پروژه..." aria-label="جست‌وجوی پروژه">
             </div>
 
             <div class="gallery" id="gallery">
-                <a class="project-card" data-category="personal" data-search="درباره من about me biography skills personal شخصی" href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">
+                <a class="project-card" data-category="branding" data-search="درباره من about me biography skills" href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">
                     <img src="images/aboutme.webp" alt="About me / درباره من" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="شخصی" data-en="PERSONAL">شخصی</span><span class="card-index">01</span></div>
+                        <div class="card-meta"><span class="card-category">ABOUT</span><span class="card-index">01</span></div>
                         <span class="card-title" data-fa="درباره من" data-en="About me">درباره من</span>
                         <span class="card-subtitle" data-fa="رزومه، بیوگرافی و مهارت‌ها" data-en="Biography & Skills">رزومه، بیوگرافی و مهارت‌ها</span>
                     </div>
@@ -667,27 +647,27 @@
                     <img src="images/caravan.webp" alt="Caravan Brand / برند کاروان" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="برندینگ" data-en="BRANDING">برندینگ</span><span class="card-index">02</span></div>
+                        <div class="card-meta"><span class="card-category">BRANDING</span><span class="card-index">02</span></div>
                         <span class="card-title" data-fa="برند کاروان" data-en="Caravan Brand">برند کاروان</span>
                         <span class="card-subtitle" data-fa="هویت بصری برند" data-en="Brand Visual Identity">هویت بصری برند</span>
                     </div>
                 </a>
 
-                <a class="project-card" data-category="branding mascot character" data-search="هوید hoveid mascot brand identity مسکات طراحی شخصیت" href="https://mohammadmahdinaeiji.github.io/portfolio/hoveid">
+                <a class="project-card" data-category="branding" data-search="هوید hoveid mascot brand identity" href="https://mohammadmahdinaeiji.github.io/portfolio/hoveid">
                     <img src="images/hoveid.webp" alt="Hoveid Brand / برند هوید" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="برندینگ · مسکات · طراحی شخصیت" data-en="BRANDING · MASCOT · CHARACTER">برندینگ · مسکات · طراحی شخصیت</span><span class="card-index">03</span></div>
+                        <div class="card-meta"><span class="card-category">BRANDING</span><span class="card-index">03</span></div>
                         <span class="card-title" data-fa="برند هوید" data-en="Hoveid Brand">برند هوید</span>
                         <span class="card-subtitle" data-fa="هویت بصری برند + طراحی مسکات" data-en="Brand Identity + Mascot">هویت بصری برند + طراحی مسکات</span>
                     </div>
                 </a>
 
-                <a class="project-card" data-category="illustration boardgame" data-search="آفتابه دزد aftabe dozd boardgame illustration تصویرسازی بازی رومیزی" href="https://mohammadmahdinaeiji.github.io/portfolio/aftabedozd">
+                <a class="project-card" data-category="illustration" data-search="آفتابه دزد aftabe dozd boardgame illustration" href="https://mohammadmahdinaeiji.github.io/portfolio/aftabedozd">
                     <img src="images/aftabe.webp" alt="Aftabe Boardgame / بازی آفتابه دزد" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="تصویرسازی · بازی رومیزی" data-en="ILLUSTRATION · BOARD GAME">تصویرسازی · بازی رومیزی</span><span class="card-index">04</span></div>
+                        <div class="card-meta"><span class="card-category">ILLUSTRATION</span><span class="card-index">04</span></div>
                         <span class="card-title" data-fa="بازی آفتابه دزد" data-en="Aftabe Dozd">بازی آفتابه دزد</span>
                         <span class="card-subtitle" data-fa="تصویرسازی و مدلسازی بازی رومیزی" data-en="Boardgame">تصویرسازی و مدلسازی بازی رومیزی</span>
                     </div>
@@ -697,7 +677,7 @@
                     <img src="images/ai_i.webp" alt="AI & I / هوش مصنوعی و من" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="هوش مصنوعی" data-en="AI">هوش مصنوعی</span><span class="card-index">05</span></div>
+                        <div class="card-meta"><span class="card-category">AI</span><span class="card-index">05</span></div>
                         <span class="card-title" data-fa="هوش مصنوعی و من" data-en="AI & I">هوش مصنوعی و من</span>
                         <span class="card-subtitle" data-fa="پروژه‌های AI" data-en="AI Projects">پروژه‌های AI</span>
                     </div>
@@ -707,7 +687,7 @@
                     <img src="images/book.webp" alt="Book Cover / جلد کتاب و لی‌اوت" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="ادیتوریال" data-en="EDITORIAL">ادیتوریال</span><span class="card-index">06</span></div>
+                        <div class="card-meta"><span class="card-category">EDITORIAL</span><span class="card-index">06</span></div>
                         <span class="card-title" data-fa="طراحی جلد کتاب و لی‌اوت" data-en="Book Cover">طراحی جلد کتاب و لی‌اوت</span>
                         <span class="card-subtitle" data-fa="طراحی جلد و صفحه‌آرایی کتاب" data-en="Cover & Layout">طراحی جلد و صفحه‌آرایی کتاب</span>
                     </div>
@@ -717,7 +697,7 @@
                     <img src="images/typography.webp" alt="Typography / تایپوگرافی" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="تایپوگرافی" data-en="TYPOGRAPHY">تایپوگرافی</span><span class="card-index">07</span></div>
+                        <div class="card-meta"><span class="card-category">TYPE</span><span class="card-index">07</span></div>
                         <span class="card-title" data-fa="تایپوگرافی" data-en="Typography">تایپوگرافی</span>
                         <span class="card-subtitle" data-fa="طراحی تایپوگرافی، پوستر و لوگوتایپ" data-en="Typography & Logotype">طراحی تایپوگرافی، پوستر و لوگوتایپ</span>
                     </div>
@@ -727,18 +707,18 @@
                     <img src="images/illustration.webp" alt="Illustration / تصویرسازی" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="تصویرسازی" data-en="ILLUSTRATION">تصویرسازی</span><span class="card-index">08</span></div>
+                        <div class="card-meta"><span class="card-category">ILLUSTRATION</span><span class="card-index">08</span></div>
                         <span class="card-title" data-fa="تصویرسازی" data-en="Illustration">تصویرسازی</span>
                         <span class="card-subtitle" data-fa="تصویرسازی کتاب و تصویرسازی شخصی" data-en="Book & Personal Illustration">تصویرسازی کتاب و تصویرسازی شخصی</span>
                     </div>
                 </a>
 
 
-                <a class="project-card" data-category="mascot character" data-search="داکلند duckland mascot character design طراحی شخصیت مسکات" href="https://mohammadmahdinaeiji.ir/duckland/" target="_blank" rel="noopener">
+                <a class="project-card" data-category="mascot" data-search="داکلند duckland mascot character design طراحی شخصیت مسکات" href="https://mohammadmahdinaeiji.ir/duckland/" target="_blank" rel="noopener">
                     <img src="images/duckland.webp" alt="Duckland / داکلند" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="مسکات · طراحی شخصیت" data-en="MASCOT · CHARACTER">مسکات · طراحی شخصیت</span><span class="card-index">09</span></div>
+                        <div class="card-meta"><span class="card-category">MASCOT</span><span class="card-index">09</span></div>
                         <span class="card-title" data-fa="داکلند" data-en="Duckland">داکلند</span>
                         <span class="card-subtitle" data-fa="طراحی شخصیت مسکات" data-en="Mascot Character Design">طراحی شخصیت مسکات</span>
                     </div>
@@ -748,17 +728,17 @@
                     <img src="images/qajarcats.webp" alt="Qajar Cats / گربه‌های قاجاری" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="بازی رومیزی · تصویرسازی" data-en="BOARD GAME · ILLUSTRATION">بازی رومیزی · تصویرسازی</span><span class="card-index">10</span></div>
+                        <div class="card-meta"><span class="card-category">BOARD GAME</span><span class="card-index">10</span></div>
                         <span class="card-title" data-fa="گربه‌های قاجاری" data-en="Qajar Cats">گربه‌های قاجاری</span>
                         <span class="card-subtitle" data-fa="تصویرسازی برد گیم · طراحی دیجیتال" data-en="Board Game Illustration · Digital Design">تصویرسازی برد گیم · طراحی دیجیتال</span>
                     </div>
                 </a>
 
-                <a class="project-card" data-category="motion mascot character" data-search="یوزی yozi motion graphics logomotion mascot character design طراحی کاراکتر مسکات موشن گرافیک لوگوموشن پروژه های دانشگاهی پروژه‌های دانشگاهی" href="https://mohammadmahdinaeiji.ir/yozi/" target="_blank" rel="noopener">
+                <a class="project-card" data-category="character" data-search="یوزی yozi logomotion university university projects character design طراحی کاراکتر لوگوموشن پروژه های دانشگاهی پروژه‌های دانشگاهی" href="https://mohammadmahdinaeiji.ir/yozi/" target="_blank" rel="noopener">
                     <img src="images/yozi.webp" alt="Yozi / یوزی" loading="lazy" decoding="async">
                     <span class="card-arrow">↗</span>
                     <div class="card-info">
-                        <div class="card-meta"><span class="card-category" data-fa="موشن گرافیک · مسکات · طراحی شخصیت" data-en="MOTION · MASCOT · CHARACTER">موشن گرافیک · مسکات · طراحی شخصیت</span><span class="card-index">11</span></div>
+                        <div class="card-meta"><span class="card-category">CHARACTER</span><span class="card-index">11</span></div>
                         <span class="card-title" data-fa="یوزی" data-en="Yozi">یوزی</span>
                         <span class="card-subtitle" data-fa="لوگوموشن · پروژه‌های دانشگاهی · طراحی کاراکتر" data-en="Logo Motion · University Projects · Character Design">لوگوموشن · پروژه‌های دانشگاهی · طراحی کاراکتر</span>
                     </div>
@@ -858,13 +838,6 @@
     </button>
 
     <div class="toast" id="toast" role="status"></div>
-    <div class="pdf-notice" id="pdfNotice" role="status" aria-live="polite" aria-hidden="true">
-        <span data-fa="این نسخه PDF ممکن است برخی از آخرین آپدیت‌های پروژه‌ها را نداشته باشد. برای مشاهده آخرین نسخه پروژه‌ها، استفاده از خود سایت توصیه می‌شود."
-              data-en="This PDF version may not include some of the latest project updates. For the latest versions, using the website is recommended.">
-            این نسخه PDF ممکن است برخی از آخرین آپدیت‌های پروژه‌ها را نداشته باشد. برای مشاهده آخرین نسخه پروژه‌ها، استفاده از خود سایت توصیه می‌شود.
-        </span>
-        <button type="button" id="pdfNoticeClose" aria-label="بستن">×</button>
-    </div>
 
     <div class="pdf-options-overlay" id="pdfOptionsOverlay" aria-hidden="true">
         <div class="pdf-options-box" role="dialog" aria-modal="true" aria-labelledby="pdfOptionsTitle">
@@ -950,22 +923,7 @@
             body.classList.remove("loader-active");
         }
 
-        const pdfNotice = document.getElementById("pdfNotice");
-        const pdfNoticeClose = document.getElementById("pdfNoticeClose");
-
-        function showPdfNotice(){
-            if (!pdfNotice) return;
-            pdfNotice.classList.add("show");
-            pdfNotice.setAttribute("aria-hidden","false");
-        }
-
-        pdfNoticeClose?.addEventListener("click", () => {
-            pdfNotice?.classList.remove("show");
-            pdfNotice?.setAttribute("aria-hidden","true");
-        });
-
         portfolioDownload?.addEventListener("click", () => {
-            showPdfNotice();
             if (!pdfOptionsOverlay) return;
             pdfOptionsOverlay.classList.add("open");
             pdfOptionsOverlay.setAttribute("aria-hidden","false");
@@ -991,8 +949,10 @@
 
         /*
          * GIFs do not expose their animation duration through <img>.
-         * Read the frame delays directly from the GIF binary so the loader
-         * can finish after exactly one complete animation cycle.
+         * Instead of watching the rendered frames (which is unreliable on
+         * mobile Safari/Chrome and especially with looping GIFs), read the
+         * GIF's frame delays directly from its binary data. This gives us the
+         * exact duration of one complete GIF cycle, then we wait 2 seconds.
          */
         async function getGifDuration(src){
             const response = await fetch(src, {cache:"force-cache"});
@@ -1092,7 +1052,7 @@
                     const gifDuration = await getGifDuration(portfolioLoaderGif.currentSrc || portfolioLoaderGif.src);
                     window.__portfolioLoaderFinishTimer = setTimeout(
                         finishPortfolioLoader,
-                        gifDuration
+                        gifDuration + 2000
                     );
                 } catch (_) {
                     // If binary duration detection fails, use the browser's
@@ -1167,7 +1127,7 @@
             let visible = 0;
 
             cards.forEach(card => {
-                const categories = (card.dataset.category || "").split(/\s+/).filter(Boolean);\n                const matchesFilter = currentFilter === "all" || categories.includes(currentFilter);
+                const matchesFilter = currentFilter === "all" || card.dataset.category === currentFilter;
                 const matchesSearch = !query || card.dataset.search.toLowerCase().includes(query);
                 const show = matchesFilter && matchesSearch;
                 card.classList.toggle("is-hidden", !show);
@@ -1285,8 +1245,8 @@
             }
 
             /* Filter labels */
-            const filterFa = ["همه","برندینگ","تصویرسازی","AI","تایپوگرافی","ادیتوریال","موشن گرافیک","مسکات","طراحی شخصیت","بازی رومیزی","شخصی"];
-            const filterEn = ["All","Branding","Illustration","AI","Typography","Editorial","Motion Graphics","Mascot","Character Design","Board Game","Personal"];
+            const filterFa = ["همه","برندینگ","تصویرسازی","AI","تایپوگرافی","ادیتوریال"];
+            const filterEn = ["All","Branding","Illustration","AI","Typography","Editorial"];
             filters.forEach((button, i) => {
                 button.textContent = (safeLang === "fa" ? filterFa : filterEn)[i];
             });
