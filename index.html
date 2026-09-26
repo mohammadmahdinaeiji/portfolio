@@ -1298,8 +1298,8 @@
             }
 
             /* Filter labels */
-            const filterFa = ["همه","برندینگ","تصویرسازی","AI","تایپوگرافی","ادیتوریال","مسکات","طراحی شخصیت","بردگیم","موشن گرافیک","پروفایل"];
-            const filterEn = ["All","Branding","Illustration","AI","Typography","Editorial","Mascot","Character Design","Board Game","Motion Graphics","Profile"];
+const filterFa = ["همه","برندینگ","تصویرسازی","AI","ادیتوریال","مسکات / طراحی شخصیت","بردگیم","موشن گرافیک"];
+const filterEn = ["All","Branding","Illustration","AI","Editorial","Mascot / Character Design","Board Game","Motion Graphics"];
             filters.forEach((button, i) => {
                 button.textContent = (safeLang === "fa" ? filterFa : filterEn)[i];
             });
