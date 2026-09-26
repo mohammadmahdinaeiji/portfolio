@@ -994,6 +994,8 @@
             pdfOptionsOverlay.classList.add("open");
             pdfOptionsOverlay.setAttribute("aria-hidden","false");
 
+            // Show the notice immediately when the 3-version PDF window opens.
+            // It stays independent of the individual version buttons.
             showPdfVersionNotice();
         });
 
