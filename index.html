@@ -516,6 +516,63 @@
             *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
         }
     </style>
+
+<style id="pdf-warning-fix">
+/* PDF warning: tied to the PDF modal, above its blur/backdrop */
+#pdfVersionNotice {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(18px);
+  width: min(680px, calc(100vw - 32px));
+  z-index: 2147483647;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 196, 0, .55);
+  border-radius: 16px;
+  background: rgba(18, 18, 18, .96);
+  color: #fff;
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.32),
+    0 0 0 1px rgba(255,255,255,.05),
+    0 0 28px rgba(255,196,0,.16);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 14px;
+  line-height: 1.65;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity .22s ease, transform .22s ease;
+}
+#pdfVersionNotice.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+#pdfVersionNotice .pdf-notice-icon {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffc400;
+  color: #111;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 0 0 5px rgba(255,196,0,.12);
+}
+#pdfVersionNotice strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+#pdfVersionNotice .pdf-notice-text {
+  opacity: .88;
+}
+</style>
+
 </head>
 
 <body class="loader-active">
@@ -911,6 +968,7 @@
             pdfOptionsOverlay.classList.remove("open");
             pdfOptionsOverlay.setAttribute("aria-hidden","true");
             body.classList.remove("loader-active");
+            setPdfVersionNotice(false);
         }
 
         portfolioDownload?.addEventListener("click", () => {
@@ -1316,5 +1374,18 @@
         };
     })();
     </script>
+
+<div id="pdfVersionNotice" role="status" aria-live="polite" aria-hidden="true">
+  <div class="pdf-notice-icon">!</div>
+  <div>
+    <strong data-fa="توجه درباره نسخه PDF" data-en="PDF version notice">توجه درباره نسخه PDF</strong>
+    <div class="pdf-notice-text"
+         data-fa="این نسخه PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید."
+         data-en="This PDF version does not include some of the latest project updates. For the latest versions, we recommend using the website itself.">
+      این نسخه PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید.
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
