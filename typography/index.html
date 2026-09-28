@@ -104,6 +104,14 @@
 
         *{box-sizing:border-box}
         html{scroll-behavior:smooth}
+html[lang="en"]{direction:ltr}
+html[lang="en"] body{direction:ltr}
+html[lang="en"] .about-header{text-align:left}
+html[lang="en"] .about-title,html[lang="en"] .about-subtitle,html[lang="en"] .section-head,html[lang="en"] .contact-box{text-align:left}
+html[lang="en"] .hero-copy{text-align:left}
+html[lang="en"] .hero-bio{text-align:left}
+html[lang="en"] .card-info{text-align:left}
+
         body{
             margin:0;
             background:
@@ -598,15 +606,16 @@ body.light .contact-menu a:hover{
 <body><div class="progress" id="progress"></div>
 <header class="site-nav" id="siteNav">
 <div class="nav-inner">
-<a class="brand" href="https://mohammadmahdinaeiji.github.io/portfolio/" aria-label="Portfolio">
+<a class="brand" href="https://mohammadmahdinaeiji.ir/" aria-label="Portfolio">
 <span class="brand-mark favicon-mark"><img src="../images/iconsite.webp" alt="MN"></span>
 <span class="brand-copy"><strong>Mohammadmahdi Naeiji</strong><span>Graphic Designer · Portfolio</span></span>
 </a>
 <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-<a href="https://mohammadmahdinaeiji.github.io/portfolio/">خانه</a>
-<a href="https://mohammadmahdinaeiji.github.io/portfolio/#work">پروژه‌ها</a>
-<a href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">درباره من</a>
-<a href="#contact">تماس</a>
+<a href="https://mohammadmahdinaeiji.ir/" data-nav-key="home">خانه</a>
+<a href="https://mohammadmahdinaeiji.ir/aboutme" data-nav-key="about">درباره من</a>
+<a href="https://mohammadmahdinaeiji.ir/#work" data-nav-key="projects">پروژه‌ها</a>
+<a href="https://mohammadmahdinaeiji.ir/blog/" data-nav-key="blog">وبلاگ</a>
+<a href="https://mohammadmahdinaeiji.ir/#contact" data-nav-key="contact">تماس</a>
 </nav>
 <div class="lang-toggle" id="langToggle" aria-label="Language"><button type="button" data-lang="en" class="active"><img src="../images/gb.png" alt="English Flag"> EN</button><span>/</span><button type="button" data-lang="fa"> <img src="../images/ir.png" alt="Farsi Flag"> FA</button></div>
 <div class="nav-actions"><button class="icon-btn" id="themeToggle" aria-label="تغییر تم"><img src="../images/sun.svg" alt=""></button><button class="menu-btn" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false">☰</button></div>
@@ -650,15 +659,18 @@ const body=document.body, progress=document.getElementById('progress'), themeTog
 const savedTheme=localStorage.getItem('portfolio-theme'); if(savedTheme==='light') body.classList.add('light');
 function updateThemeIcon(){if(themeIcon) themeIcon.src=body.classList.contains('light')?'../images/moon.svg':'../images/sun.svg'} updateThemeIcon();
 themeToggle?.addEventListener('click',()=>{body.classList.toggle('light');localStorage.setItem('portfolio-theme',body.classList.contains('light')?'light':'dark');updateThemeIcon()});
-menuBtn?.addEventListener('click',()=>{const open=navLinks.classList.toggle('mobile-open');menuBtn.setAttribute('aria-expanded',String(open)); if(open){navLinks.style.display='flex';navLinks.style.position='absolute';navLinks.style.top='72px';navLinks.style.right='0';navLinks.style.left='0';navLinks.style.padding='10px';navLinks.style.flexDirection='column';navLinks.style.background='var(--surface)';navLinks.style.border='1px solid var(--line)';navLinks.style.borderRadius='18px'}else navLinks.removeAttribute('style')});
-navLinks?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=900){navLinks.classList.remove('mobile-open');navLinks.removeAttribute('style');menuBtn?.setAttribute('aria-expanded','false')}}));
+menuBtn?.addEventListener('click',()=>{const open=navLinks.classList.toggle('mobile-open');menuBtn.setAttribute('aria-expanded',String(open));});
+navLinks?.addEventListener('click',e=>{const link=e.target.closest('a');if(!link)return;if(innerWidth<=900){navLinks.classList.remove('mobile-open');navLinks.removeAttribute('style');menuBtn?.setAttribute('aria-expanded','false')}});
 function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform='scaleX('+(max>0?scrollY/max:0)+')'} addEventListener('scroll',updateProgress,{passive:true});updateProgress();
 contactFab?.addEventListener('click',()=>contactMenu?.classList.toggle('open'));document.addEventListener('click',e=>{if(!contactFab?.contains(e.target)&&!contactMenu?.contains(e.target))contactMenu?.classList.remove('open')});
-const buttons=langToggle?.querySelectorAll('button')||[], targets=document.querySelectorAll('[data-fa][data-en]');
-function setCookie(lang){const d=new Date();d.setTime(d.getTime()+365*864e5);document.cookie=`lang=${lang};expires=${d.toUTCString()};path=/portfolio;SameSite=Lax`}
-function getCookie(){return document.cookie.split(';').map(x=>x.trim()).find(x=>x.startsWith('lang='))?.slice(5)||null}
-function applyLanguage(lang){const safe=lang==='en'?'en':'fa';buttons.forEach(b=>b.classList.toggle('active',b.dataset.lang===safe));targets.forEach(el=>{if(el.dataset[safe]!==undefined)el.innerHTML=el.dataset[safe]});document.documentElement.lang=safe;document.documentElement.dir=safe==='fa'?'rtl':'ltr';setCookie(safe)}
-buttons.forEach(b=>b.addEventListener('click',()=>applyLanguage(b.dataset.lang)));applyLanguage(getCookie()||'fa');
+const buttons=langToggle?.querySelectorAll('button[data-lang]')||[], targets=document.querySelectorAll('[data-fa][data-en]');
+const LANGUAGE_KEY='portfolio-language';
+const navLabels={fa:{home:'خانه',about:'درباره من',projects:'پروژه‌ها',blog:'وبلاگ',contact:'تماس'},en:{home:'Home',about:'About me',projects:'Projects',blog:'Blog',contact:'Contact'}};
+function saveLanguage(lang){try{localStorage.setItem(LANGUAGE_KEY,lang)}catch(e){}const d=new Date(Date.now()+365*864e5);document.cookie=`lang=${lang};expires=${d.toUTCString()};path=/;SameSite=Lax`}
+function getSavedLanguage(){try{const saved=localStorage.getItem(LANGUAGE_KEY);if(saved==='fa'||saved==='en')return saved}catch(e){}const match=document.cookie.match(/(?:^|;\s*)lang=(fa|en)(?:;|$)/);return match?match[1]:null}
+function applyLanguage(lang,persist=true){const safe=lang==='en'?'en':'fa';buttons.forEach(b=>{const active=b.dataset.lang===safe;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});targets.forEach(el=>{if(el.dataset[safe]!==undefined)el.innerHTML=el.dataset[safe]});navLinks?.querySelectorAll('a[data-nav-key]').forEach(a=>{const key=a.dataset.navKey;if(navLabels[safe][key])a.textContent=navLabels[safe][key]});document.documentElement.lang=safe;document.documentElement.dir=safe==='fa'?'rtl':'ltr';if(persist)saveLanguage(safe)}
+langToggle?.addEventListener('click',e=>{const button=e.target.closest('button[data-lang]');if(!button||!langToggle.contains(button))return;e.preventDefault();applyLanguage(button.dataset.lang,true)});
+applyLanguage(getSavedLanguage()||'fa',false);
 })();
 </script>
 </body>
