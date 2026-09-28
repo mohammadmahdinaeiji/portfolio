@@ -215,6 +215,7 @@
         .blog-section-title{display:block;text-decoration:none;color:inherit;transition:opacity .25s,transform .25s}
         .blog-section-title:hover{opacity:.72;transform:translateX(-3px)}
         .section-desc{color:var(--muted);font-size:13px;max-width:430px;line-height:1.9}
+        html[dir="ltr"] .section-desc{direction:ltr;text-align:left}
         .toolbar{
             display:flex;align-items:center;justify-content:space-between;gap:15px;
             padding:10px;border:1px solid var(--line);background:var(--surface);
@@ -470,6 +471,15 @@
             border-radius:50%;background:rgba(16,185,129,.15);
             color:var(--accent);font-size:10px;font-weight:800;
         }
+        .pdf-update-notice{
+            margin-top:14px;padding:13px 15px;border:1px solid rgba(255,196,0,.28);
+            border-radius:15px;background:rgba(255,196,0,.07);color:var(--muted);
+            font-size:11px;line-height:1.8;text-align:center;
+        }
+        html[dir="ltr"] .pdf-update-notice{direction:ltr;text-align:left}
+        .pdf-update-notice strong{display:block;margin-bottom:3px;color:var(--text);font-size:12px}
+        body.light .pdf-update-notice{background:rgba(255,196,0,.1);border-color:rgba(180,130,0,.28)}
+
         body.light .pdf-options-overlay{background:rgba(10,12,15,.38)}
         body.loader-active{overflow:hidden}
 
@@ -527,62 +537,7 @@
             *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
         }
     </style>
-
-<style id="pdf-warning-fix">
-/* PDF warning: tied to the PDF modal, above its blur/backdrop */
-#pdfVersionNotice {
-  position: fixed;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%) translateY(18px);
-  width: min(680px, calc(100vw - 32px));
-  z-index: 2147483647 !important;
-  padding: 16px 20px;
-  border: 1px solid rgba(255, 196, 0, .55);
-  border-radius: 16px;
-  background: rgba(18, 18, 18, .96);
-  color: #fff;
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.32),
-    0 0 0 1px rgba(255,255,255,.05),
-    0 0 28px rgba(255,196,0,.16);
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  font-size: 14px;
-  line-height: 1.65;
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-  transition: opacity .22s ease, transform .22s ease;
-}
-#pdfVersionNotice.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-#pdfVersionNotice .pdf-notice-icon {
-  flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #ffc400;
-  color: #111;
-  font-weight: 900;
-  font-size: 18px;
-  box-shadow: 0 0 0 5px rgba(255,196,0,.12);
-}
-#pdfVersionNotice strong {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 14px;
-}
-#pdfVersionNotice .pdf-notice-text {
-  opacity: .88;
-}
-</style>
+>
 
 </head>
 
@@ -919,6 +874,16 @@
                     <span class="pdf-option-size">زیر ۴ مگابایت</span>
                 </span>
             </a>
+
+            <div class="pdf-update-notice"
+                 data-fa="نسخه‌های PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید."
+                 data-en="Some latest project updates are not included in the PDF versions. For the latest versions of the projects, we recommend using the website itself.">
+                <strong data-fa="توجه درباره نسخه PDF" data-en="PDF version notice">توجه درباره نسخه PDF</strong>
+                <span data-fa="نسخه‌های PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید."
+                      data-en="Some latest project updates are not included in the PDF versions. For the latest versions of the projects, we recommend using the website itself.">
+                    نسخه‌های PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید.
+                </span>
+            </div>
         </div>
     </div>
 
@@ -955,26 +920,6 @@
         const pdfOptionsOverlay = document.getElementById("pdfOptionsOverlay");
         const pdfOptionsClose = document.getElementById("pdfOptionsClose");
 
-        const pdfVersionNotice = document.getElementById("pdfVersionNotice");
-
-        function setPdfVersionNotice(show){
-            if (!pdfVersionNotice) return;
-            clearTimeout(window.__pdfNoticeTimer);
-
-            pdfVersionNotice.classList.toggle("show", show);
-            pdfVersionNotice.setAttribute("aria-hidden", String(!show));
-
-            if (show) {
-                window.__pdfNoticeTimer = setTimeout(() => {
-                    pdfVersionNotice.classList.remove("show");
-                    pdfVersionNotice.setAttribute("aria-hidden", "true");
-                }, 3000);
-            }
-        }
-
-        function showPdfVersionNotice(){
-            setPdfVersionNotice(true);
-        }
 
         function closePdfOptions(){
             if (!pdfOptionsOverlay) return;
@@ -991,7 +936,6 @@
 
             // Show the notice immediately when the 3-version PDF window opens.
             // It stays independent of the individual version buttons.
-            showPdfVersionNotice();
         });
 
         pdfOptionsClose?.addEventListener("click", closePdfOptions);
@@ -1347,13 +1291,6 @@ const filterEn = ["All","Branding","Illustration","AI","Editorial","Mascot / Cha
             pdfOptionSizes.forEach((el,i) => {
                 el.textContent = (safeLang === "fa" ? optionSizesFa : optionSizesEn)[i];
             });
-            if (pdfVersionNotice) {
-                const noticeTargets = pdfVersionNotice.querySelectorAll("[data-fa][data-en]");
-                noticeTargets.forEach(el => {
-                    el.innerHTML = el.dataset[safeLang] || el.innerHTML;
-                });
-            }
-
             const loaderTitle = document.getElementById("portfolioLoaderTitle");
             if (loaderTitle) {
                 loaderTitle.textContent = safeLang === "fa"
@@ -1392,17 +1329,6 @@ const filterEn = ["All","Branding","Illustration","AI","Editorial","Mascot / Cha
     })();
     </script>
 
-<div id="pdfVersionNotice" role="status" aria-live="polite" aria-hidden="true">
-  <div class="pdf-notice-icon">!</div>
-  <div>
-    <strong data-fa="توجه درباره نسخه PDF" data-en="PDF version notice">توجه درباره نسخه PDF</strong>
-    <div class="pdf-notice-text"
-         data-fa="این نسخه PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید."
-         data-en="This PDF version does not include some of the latest project updates. For the latest versions, we recommend using the website itself.">
-      این نسخه PDF برخی از آخرین به‌روزرسانی‌های پروژه‌ها را ندارد. برای مشاهده جدیدترین نسخه پروژه‌ها، توصیه می‌شود از خود سایت استفاده کنید.
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
