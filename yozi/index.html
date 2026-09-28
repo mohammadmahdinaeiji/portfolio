@@ -878,10 +878,11 @@ body.light .contact-menu a:hover{
         </a>
 
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-            <a href="https://mohammadmahdinaeiji.github.io/portfolio/">خانه</a>
-            <a href="https://mohammadmahdinaeiji.github.io/portfolio/#work">پروژه‌ها</a>
-            <a href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme">درباره من</a>
-            <a href="#project">پروژه</a>
+            <a href="https://mohammadmahdinaeiji.ir/" data-nav-key="home">خانه</a>
+            <a href="https://mohammadmahdinaeiji.ir/#work" data-nav-key="projects">پروژه‌ها</a>
+            <a href="https://mohammadmahdinaeiji.ir/aboutme" data-nav-key="about">درباره من</a>
+            <a href="https://mohammadmahdinaeiji.ir/#blog" data-nav-key="blog">وبلاگ</a>
+            <a href="https://mohammadmahdinaeiji.ir/#contact" data-nav-key="contact">تماس</a>
         </nav>
 
         <div class="lang-toggle" id="langToggle" aria-label="Language">
@@ -1093,7 +1094,7 @@ body.light .contact-menu a:hover{
         if (open) {
             navLinks.style.display = "flex";
             navLinks.style.position = "absolute";
-            navLinks.style.top = "72px";
+            navLinks.style.top = "calc(100% + 8px)";
             navLinks.style.right = "0";
             navLinks.style.left = "0";
             navLinks.style.padding = "10px";
@@ -1106,14 +1107,15 @@ body.light .contact-menu a:hover{
         }
     });
 
-    navLinks?.querySelectorAll("a").forEach(a => {
-        a.addEventListener("click", () => {
-            if (window.innerWidth <= 900) {
-                navLinks.classList.remove("mobile-open");
-                navLinks.removeAttribute("style");
-                menuBtn?.setAttribute("aria-expanded", "false");
-            }
-        });
+    // Delegated nav listener prevents duplicate handlers and also works for dynamic language labels.
+    navLinks?.addEventListener("click", e => {
+        const link = e.target.closest("a");
+        if (!link) return;
+        if (window.innerWidth <= 900) {
+            navLinks.classList.remove("mobile-open");
+            navLinks.removeAttribute("style");
+            menuBtn?.setAttribute("aria-expanded", "false");
+        }
     });
 
     function updateProgress(){
@@ -1124,58 +1126,67 @@ body.light .contact-menu a:hover{
     window.addEventListener("scroll", updateProgress, {passive:true});
     updateProgress();
 
-    /* Language */
+    /* Language — persistent across the whole site */
     const langToggle = document.getElementById("langToggle");
-    const langButtons = langToggle ? langToggle.querySelectorAll("button") : [];
+    const langButtons = langToggle ? langToggle.querySelectorAll("button[data-lang]") : [];
     const langTargets = document.querySelectorAll("[data-fa][data-en]");
+    const LANGUAGE_KEY = "portfolio-language";
 
-    function setLanguageCookie(lang){
-        const date = new Date();
-        date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/portfolio;SameSite=Lax`;
+    function setLanguage(lang){
+        const safeLang = lang === "en" ? "en" : "fa";
+        try { localStorage.setItem(LANGUAGE_KEY, safeLang); } catch (e) {}
+        const date = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
+        document.cookie = `lang=${safeLang};expires=${date.toUTCString()};path=/;SameSite=Lax`;
     }
 
-    function getLanguageCookie(){
-        const name = "lang=";
-        const decoded = decodeURIComponent(document.cookie);
-        for (const part of decoded.split(";")) {
-            const c = part.trim();
-            if (c.indexOf(name) === 0) return c.substring(name.length);
-        }
-        return null;
+    function getSavedLanguage(){
+        try {
+            const saved = localStorage.getItem(LANGUAGE_KEY);
+            if (saved === "fa" || saved === "en") return saved;
+        } catch (e) {}
+
+        const match = document.cookie.match(/(?:^|;\\s*)lang=(fa|en)(?:;|$)/);
+        return match ? match[1] : null;
     }
 
-    function applyLanguage(lang){
+    const navLabels = {
+        fa: {home:"خانه", projects:"پروژه‌ها", about:"درباره من", blog:"وبلاگ", contact:"تماس"},
+        en: {home:"Home", projects:"Projects", about:"About me", blog:"Blog", contact:"Contact"}
+    };
+
+    function applyLanguage(lang, persist = true){
         const safeLang = lang === "en" ? "en" : "fa";
 
         langButtons.forEach(btn => {
             btn.classList.toggle("active", btn.dataset.lang === safeLang);
+            btn.setAttribute("aria-pressed", btn.dataset.lang === safeLang ? "true" : "false");
         });
 
         langTargets.forEach(el => {
-            if (el.dataset[safeLang] !== undefined) {
-                el.innerHTML = el.dataset[safeLang];
-            }
+            const value = el.dataset[safeLang];
+            if (value !== undefined) el.innerHTML = value;
         });
 
-        const navItemsFa = ["خانه", "پروژه‌ها", "درباره من", "پروژه"];
-        const navItemsEn = ["Home", "Projects", "About me", "Project"];
-        const navItems = safeLang === "fa" ? navItemsFa : navItemsEn;
-
-        navLinks?.querySelectorAll("a").forEach((a, i) => {
-            if (navItems[i]) a.textContent = navItems[i];
+        navLinks?.querySelectorAll("a[data-nav-key]").forEach(a => {
+            const key = a.dataset.navKey;
+            if (navLabels[safeLang][key]) a.textContent = navLabels[safeLang][key];
         });
 
         document.documentElement.lang = safeLang;
         document.documentElement.dir = safeLang === "fa" ? "rtl" : "ltr";
-        setLanguageCookie(safeLang);
+        if (persist) setLanguage(safeLang);
     }
 
-    langButtons.forEach(btn => {
-        btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    // One delegated listener: safe even if the header is re-rendered/reused.
+    langToggle?.addEventListener("click", e => {
+        const btn = e.target.closest("button[data-lang]");
+        if (!btn || !langToggle.contains(btn)) return;
+        e.preventDefault();
+        applyLanguage(btn.dataset.lang, true);
     });
 
-    applyLanguage(getLanguageCookie() || "fa");
+    // Restore the last selected language on every page/subpage.
+    applyLanguage(getSavedLanguage() || "fa", false);
 
     /* Custom Yozi video player */
     const player = document.getElementById("yoziPlayer");
