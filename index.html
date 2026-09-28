@@ -212,6 +212,8 @@
         .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
         .section-kicker{color:var(--accent-2);font-size:12px;font-weight:700}
         .section-title{font-size:clamp(2rem,4vw,3.3rem);margin:5px 0 0;font-weight:900;letter-spacing:-.04em}
+        .blog-section-title{display:block;text-decoration:none;color:inherit;transition:opacity .25s,transform .25s}
+        .blog-section-title:hover{opacity:.72;transform:translateX(-3px)}
         .section-desc{color:var(--muted);font-size:13px;max-width:430px;line-height:1.9}
         .toolbar{
             display:flex;align-items:center;justify-content:space-between;gap:15px;
@@ -285,14 +287,23 @@
         .blog-empty h3{margin:0 0 10px;font-size:24px;font-weight:800}
         .blog-empty p{margin:0 auto;color:var(--muted);font-size:13px;line-height:1.9;max-width:460px}
         .blog-card-template{
-            display:none;
+            display:block;
             position:relative;overflow:hidden;border:1px solid var(--line);
             border-radius:22px;background:var(--surface);min-height:260px;
+            text-decoration:none;color:var(--text);
+            transition:transform .35s ease,box-shadow .35s ease,border-color .3s ease;
         }
         .blog-card-template img{width:100%;height:180px;object-fit:cover;display:block}
         .blog-card-template .blog-card-copy{padding:16px}
         .blog-card-template h3{margin:0;font-size:17px}
-        .blog-card-template p{margin:7px 0 0;color:var(--muted);font-size:11px}
+        .blog-card-template p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.8}
+        .blog-card-template:hover{
+            transform:translateY(-7px);
+            box-shadow:var(--shadow);
+            border-color:rgba(16,185,129,.45);
+        }
+        .blog-card-link img{transition:transform .5s ease}
+        .blog-card-link:hover img{transform:scale(1.045)}
         .blog-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 
         /* Contact */
@@ -814,45 +825,29 @@
             <div class="section-head">
                 <div>
                     <div class="section-kicker">BLOG</div>
-                    <h2 class="section-title" data-fa="وبلاگ" data-en="Blog">وبلاگ</h2>
+                    <a class="section-title blog-section-title" href="https://mohammadmahdinaeiji.ir/blog/" data-fa="وبلاگ" data-en="Blog">وبلاگ</a>
                 </div>
                 <p class="section-desc" data-fa="یادداشت‌ها، فرایند طراحی و مطالب مرتبط با تجربه‌های بصری من." data-en="Notes, design process and thoughts from my visual practice.">
                     یادداشت‌ها، فرایند طراحی و مطالب مرتبط با تجربه‌های بصری من.
                 </p>
             </div>
 
-            <!-- Blog card design reserved for future posts; intentionally hidden until content is available. -->
-            <div class="blog-card-grid" aria-hidden="true">
-                <article class="blog-card-template">
-                    <img src="images/duckland.webp" alt="">
+            <div class="blog-card-grid">
+                <a class="blog-card-template blog-card-link"
+                   href="https://mohammadmahdinaeiji.ir/blog/اینکتوبر"
+                   aria-label="اینکتوبر">
+                    <img src="https://mohammadmahdinaeiji.ir/blog/inktober.webp"
+                         alt="اینکتوبر"
+                         loading="lazy"
+                         decoding="async">
                     <div class="blog-card-copy">
-                        <h3>عنوان نوشته</h3>
-                        <p>توضیح کوتاه نوشته</p>
+                        <h3 data-fa="اینکتوبر" data-en="Inktober">اینکتوبر</h3>
+                        <p data-fa="اینکتوبر چیست و چرا هر سال طراح‌ها و تصویرگران در آن شرکت می‌کنند؟"
+                           data-en="What is Inktober and why do designers and illustrators take part every year?">
+                            اینکتوبر چیست و چرا هر سال طراح‌ها و تصویرگران در آن شرکت می‌کنند؟
+                        </p>
                     </div>
-                </article>
-                <article class="blog-card-template">
-                    <img src="images/qajarcats.webp" alt="">
-                    <div class="blog-card-copy">
-                        <h3>عنوان نوشته</h3>
-                        <p>توضیح کوتاه نوشته</p>
-                    </div>
-                </article>
-                <article class="blog-card-template">
-                    <img src="images/yozi.webp" alt="">
-                    <div class="blog-card-copy">
-                        <h3>عنوان نوشته</h3>
-                        <p>توضیح کوتاه نوشته</p>
-                    </div>
-                </article>
-            </div>
-
-            <div class="blog-empty">
-                <div class="blog-empty-icon">✦</div>
-                <h3 data-fa="نوشته‌ای فعلاً موجود نیست" data-en="No posts yet">نوشته‌ای فعلاً موجود نیست</h3>
-                <p data-fa="این بخش به‌زودی با نوشته‌ها، فرایند طراحی و تجربه‌های من به‌روزرسانی خواهد شد."
-                   data-en="This section will be updated with design notes, process insights and creative experiments soon.">
-                    این بخش به‌زودی با نوشته‌ها، فرایند طراحی و تجربه‌های من به‌روزرسانی خواهد شد.
-                </p>
+                </a>
             </div>
         </section>
 
