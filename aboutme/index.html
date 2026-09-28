@@ -20,8 +20,8 @@
 
 <meta property="og:title" content="محمدمهدی نائیجی | Portfolio">
 <meta property="og:description" content="Graphic Designer — Branding, Digital Design, Typography, Illustration & AI.">
-<meta property="og:image" content="https://mohammadmahdinaeiji.github.io/portfolio/assets/cover.webp">
-<meta property="og:url" content="https://mohammadmahdinaeiji.github.io/portfolio/">
+<meta property="og:image" content="https://mohammadmahdinaeiji.ir/images/cover.webp">
+<meta property="og:url" content="https://mohammadmahdinaeiji.ir/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -576,7 +576,7 @@ body.light .contact-menu a:hover{
 <div class="progress" id="progress"></div>
 <header class="site-nav" id="siteNav">
     <div class="nav-inner">
-        <a class="brand" href="https://mohammadmahdinaeiji.github.io/portfolio/" aria-label="Portfolio">
+        <a class="brand" href="https://mohammadmahdinaeiji.ir/" aria-label="Portfolio">
             <span class="brand-mark favicon-mark"><img src="../images/iconsite.webp" alt="MN"></span>
             <span class="brand-copy">
                 <strong>Mohammadmahdi Naeiji</strong>
@@ -584,10 +584,11 @@ body.light .contact-menu a:hover{
             </span>
         </a>
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-            <a href="https://mohammadmahdinaeiji.github.io/portfolio/">خانه</a>
-            <a href="https://mohammadmahdinaeiji.github.io/portfolio/#work">پروژه‌ها</a>
-            <a href="https://mohammadmahdinaeiji.github.io/portfolio/aboutme" class="active">درباره من</a>
-            <a href="#contact">تماس</a>
+            <a href="https://mohammadmahdinaeiji.ir/" data-fa="خانه" data-en="Home">خانه</a>
+            <a href="https://mohammadmahdinaeiji.ir/aboutme" data-fa="درباره من" data-en="About me" class="active">درباره من</a>
+            <a href="https://mohammadmahdinaeiji.ir/#work" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</a>
+            <a href="https://mohammadmahdinaeiji.ir/blog/" data-fa="وبلاگ" data-en="Blog">وبلاگ</a>
+            <a href="https://mohammadmahdinaeiji.ir/#contact" data-fa="تماس" data-en="Contact">تماس</a>
         </nav>
         <div class="lang-toggle" id="langToggle" aria-label="Language">
             <button type="button" data-lang="en" class="active"><img src="../images/gb.png" alt="English Flag"> EN</button>
@@ -617,7 +618,7 @@ body.light .contact-menu a:hover{
     </section>
 
     <div class="next-page">
-        <a href="https://mohammadmahdinaeiji.github.io/portfolio/caravan">
+        <a href="https://mohammadmahdinaeiji.ir/caravan">
             <span data-fa="صفحه بعد · برند کاروان" data-en="Next · Caravan Brand">صفحه بعد · برند کاروان</span>
             <span>↗</span>
         </a>
@@ -767,32 +768,35 @@ body.light .contact-menu a:hover{
         });
 
         /* Mobile menu */
-        menuBtn?.addEventListener("click", () => {
-            const open = navLinks.classList.toggle("mobile-open");
+        function closeMobileMenu(){
+            navLinks?.classList.remove("mobile-open");
+            menuBtn?.setAttribute("aria-expanded","false");
+        }
+
+        menuBtn?.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const open = navLinks?.classList.toggle("mobile-open") ?? false;
             menuBtn.setAttribute("aria-expanded", String(open));
-            if (open) {
-                navLinks.style.display = "flex";
-                navLinks.style.position = "absolute";
-                navLinks.style.top = "72px";
-                navLinks.style.right = "0";
-                navLinks.style.left = "0";
-                navLinks.style.padding = "10px";
-                navLinks.style.flexDirection = "column";
-                navLinks.style.background = getComputedStyle(body).getPropertyValue("--surface");
-                navLinks.style.border = "1px solid var(--line)";
-                navLinks.style.borderRadius = "18px";
-            } else {
-                navLinks.removeAttribute("style");
+        });
+
+        navLinks?.querySelectorAll("a").forEach(a => {
+            a.addEventListener("click", () => closeMobileMenu());
+        });
+
+        document.addEventListener("click", (event) => {
+            if (
+                window.innerWidth <= 900 &&
+                navLinks?.classList.contains("mobile-open") &&
+                !navLinks.contains(event.target) &&
+                !menuBtn?.contains(event.target)
+            ) {
+                closeMobileMenu();
             }
         });
 
-        navLinks?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-            if (window.innerWidth <= 900) {
-                navLinks.classList.remove("mobile-open");
-                navLinks.removeAttribute("style");
-                menuBtn?.setAttribute("aria-expanded", "false");
-            }
-        }));
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 900) closeMobileMenu();
+        });
 
         /* Project filter + live search */
         let currentFilter = "all";
@@ -803,7 +807,7 @@ body.light .contact-menu a:hover{
 
             cards.forEach(card => {
                 const matchesFilter = currentFilter === "all" || card.dataset.category === currentFilter;
-                const matchesSearch = !query || card.dataset.search.toLowerCase().includes(query);
+                const matchesSearch = !query || (card.dataset.search || "").toLowerCase().includes(query);
                 const show = matchesFilter && matchesSearch;
                 card.classList.toggle("is-hidden", !show);
                 if (show) visible++;
@@ -820,39 +824,41 @@ body.light .contact-menu a:hover{
                 renderProjects();
             });
         });
+
         search?.addEventListener("input", renderProjects);
 
         /* Scroll progress */
         function updateProgress(){
+            if (!progress) return;
             const scrollable = document.documentElement.scrollHeight - window.innerHeight;
             const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
             progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
         }
+
         window.addEventListener("scroll", updateProgress, {passive:true});
         updateProgress();
 
         /* Active section in navigation */
         const sections = [...document.querySelectorAll("main section[id]")];
-        const sectionObserver = new IntersectionObserver(entries => {
+        const sectionObserver = sections.length ? new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 document.querySelectorAll(".nav-links a[data-section]").forEach(a => {
                     a.classList.toggle("active", a.dataset.section === entry.target.id);
                 });
             });
-        }, {rootMargin:"-35% 0px -55% 0px"});
-        sections.forEach(section => sectionObserver.observe(section));
+        }, {rootMargin:"-35% 0px -55% 0px"}) : null;
+
+        sections.forEach(section => sectionObserver?.observe(section));
 
         /* Contact floating menu */
-        contactFab?.addEventListener("click", () => {
+        contactFab?.addEventListener("click", (event) => {
+            event.stopPropagation();
             contactMenu?.classList.toggle("open");
         });
 
         document.addEventListener("click", e => {
-            if (
-                !contactFab?.contains(e.target) &&
-                !contactMenu?.contains(e.target)
-            ) {
+            if (!contactFab?.contains(e.target) && !contactMenu?.contains(e.target)) {
                 contactMenu?.classList.remove("open");
             }
         });
@@ -866,33 +872,41 @@ body.light .contact-menu a:hover{
             if (e.key === "Escape") {
                 contactMenu?.classList.remove("open");
                 search?.blur();
+                closeMobileMenu();
             }
         });
 
-        /* Language — restored to the original EN / FA switch behavior */
+        /* Language — persistent across the whole real site */
         const langToggle = document.getElementById("langToggle");
-        const langButtons = langToggle ? langToggle.querySelectorAll("button") : [];
+        const langButtons = langToggle ? [...langToggle.querySelectorAll("button")] : [];
         const langTargets = document.querySelectorAll("[data-fa][data-en]");
+        const LANGUAGE_KEY = "portfolio-language";
 
-        function setLanguageCookie(lang){
-            const days = 365;
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/portfolio;SameSite=Lax`;
+        function saveLanguage(lang){
+            localStorage.setItem(LANGUAGE_KEY, lang);
+
+            // Keep a cookie as a secondary fallback. Root path is intentional:
+            // the language must be shared by the homepage and all subpages.
+            const maxAge = 60 * 60 * 24 * 365;
+            document.cookie = `portfolio-language=${lang};max-age=${maxAge};path=/;SameSite=Lax`;
         }
 
-        function getLanguageCookie(){
-            const name = "lang=";
-            const decoded = decodeURIComponent(document.cookie);
-            const parts = decoded.split(";");
-            for (const part of parts){
-                const c = part.trim();
-                if (c.indexOf(name) === 0) return c.substring(name.length);
-            }
-            return null;
+        function readCookieLanguage(){
+            const match = document.cookie.match(/(?:^|;\s*)portfolio-language=(fa|en)(?:;|$)/);
+            return match ? match[1] : null;
         }
 
-        function applyLanguage(lang){
+        function getSavedLanguage(){
+            const stored = localStorage.getItem(LANGUAGE_KEY);
+            if (stored === "fa" || stored === "en") return stored;
+
+            const cookieLang = readCookieLanguage();
+            if (cookieLang) return cookieLang;
+
+            return "fa";
+        }
+
+        function applyLanguage(lang, persist = true){
             const safeLang = lang === "en" ? "en" : "fa";
 
             langButtons.forEach(btn => {
@@ -900,17 +914,14 @@ body.light .contact-menu a:hover{
             });
 
             langTargets.forEach(el => {
-                if (el.dataset[safeLang] !== undefined) {
-                    el.innerHTML = el.dataset[safeLang];
-                }
+                const value = el.dataset[safeLang];
+                if (value !== undefined) el.innerHTML = value;
             });
 
-            /* Same language behavior as the original site */
-            const navItemsFa = ["خانه", "پروژه‌ها", "درباره من", "تماس"];
-            const navItemsEn = ["Home", "Projects", "About me", "Contact"];
-            const navItems = safeLang === "fa" ? navItemsFa : navItemsEn;
-            navLinks?.querySelectorAll("a").forEach((a, i) => {
-                if (navItems[i]) a.textContent = navItems[i];
+            // Header labels are stored directly on each link, so new header
+            // items such as Blog cannot get out of sync with the language switch.
+            navLinks?.querySelectorAll("a[data-fa][data-en]").forEach(a => {
+                a.textContent = a.dataset[safeLang];
             });
 
             if (search) {
@@ -924,27 +935,28 @@ body.light .contact-menu a:hover{
                     : "No projects found.";
             }
 
-            /* Filter labels */
             const filterFa = ["همه","برندینگ","تصویرسازی","AI","تایپوگرافی","ادیتوریال"];
             const filterEn = ["All","Branding","Illustration","AI","Typography","Editorial"];
             filters.forEach((button, i) => {
-                button.textContent = (safeLang === "fa" ? filterFa : filterEn)[i];
+                button.textContent = (safeLang === "fa" ? filterFa : filterEn)[i] || button.textContent;
             });
 
             document.documentElement.lang = safeLang;
             document.documentElement.dir = safeLang === "fa" ? "rtl" : "ltr";
-            setLanguageCookie(safeLang);
+
+            if (persist) saveLanguage(safeLang);
         }
 
         langButtons.forEach(btn => {
-            btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+            btn.addEventListener("click", () => {
+                applyLanguage(btn.dataset.lang, true);
+            });
         });
 
-        /* Exposed for compatibility */
         window.setPortfolioLanguage = applyLanguage;
 
-        /* Original site default: FA when no cookie exists */
-        applyLanguage(getLanguageCookie() || "fa");
+        // Restore the exact language selected on a previous page/session.
+        applyLanguage(getSavedLanguage(), false);
 
         /* Helpful image fallback */
         document.querySelectorAll("img").forEach(img => {
@@ -961,24 +973,6 @@ body.light .contact-menu a:hover{
         };
     })();
     </script>
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const menuBtn=document.getElementById('menuBtn');
-  const navLinks=document.getElementById('navLinks');
-  if(menuBtn&&navLinks){
-    menuBtn.addEventListener('click',()=>{
-      const open=navLinks.classList.toggle('mobile-open');
-      menuBtn.setAttribute('aria-expanded',open);
-    });
-  }
-  const progress=document.getElementById('progress');
-  const update=()=>{
-    const max=document.documentElement.scrollHeight-window.innerHeight;
-    if(progress) progress.style.transform='scaleX('+(max>0?window.scrollY/max:0)+')';
-  };
-  window.addEventListener('scroll',update,{passive:true});
-  update();
-});
-</script>
 </body>
 </html>
+
