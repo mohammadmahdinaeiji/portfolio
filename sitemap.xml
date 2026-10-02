@@ -1,57 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://mohammadmahdinaeiji.ir/</loc>
+<priority>1.00</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/aboutme/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/aboutme/</loc>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/caravan/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/blog/</loc>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/hoveid/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/blog/inktober/</loc>
+<priority>0.70</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/aftabedozd/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/aftabedozd/</loc>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/ai_i/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/ai_i/</loc>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/book/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/book/</loc>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/typography/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/caravan/</loc>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://mohammadmahdinaeiji.github.io/portfolio/illustration/</loc>
-  <lastmod>2025-11-06T15:20:31+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://mohammadmahdinaeiji.ir/duckland/</loc>
+<priority>0.80</priority>
 </url>
-
-
+<url>
+<loc>https://mohammadmahdinaeiji.ir/hoveid/</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://mohammadmahdinaeiji.ir/illustration/</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://mohammadmahdinaeiji.ir/qajarcats/</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://mohammadmahdinaeiji.ir/typography/</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://mohammadmahdinaeiji.ir/yozi/</loc>
+<priority>0.80</priority>
+</url>
 </urlset>
