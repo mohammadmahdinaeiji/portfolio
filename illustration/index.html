@@ -603,8 +603,117 @@ body.light .contact-menu a:hover{
  .about-frame{border-radius:16px}
 }
 </style>
+
+<style id="maintenance-page-style">
+/* Temporary maintenance / 404 state */
+footer{
+    position:relative;
+    z-index:3100;
+}
+
+.maintenance-overlay{
+    position:fixed;
+    inset:0;
+    z-index:2500;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:110px 24px 90px;
+    background:rgba(0,0,0,.68);
+    backdrop-filter:blur(11px) brightness(.48);
+    -webkit-backdrop-filter:blur(11px) brightness(.48);
+    pointer-events:auto;
+}
+
+.maintenance-card{
+    width:min(520px,100%);
+    padding:38px 34px 34px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:24px;
+    background:rgba(12,15,18,.78);
+    box-shadow:0 30px 90px rgba(0,0,0,.48);
+    text-align:center;
+    color:#fff;
+}
+
+.maintenance-code{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:76px;
+    height:32px;
+    padding:0 13px;
+    margin-bottom:18px;
+    border:1px solid rgba(16,185,129,.45);
+    border-radius:999px;
+    color:#10b981;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.08em;
+}
+
+.maintenance-card h1{
+    margin:0 0 15px;
+    font-size:clamp(2rem,5vw,3.2rem);
+    line-height:1.05;
+    font-weight:900;
+}
+
+.maintenance-card p{
+    margin:0 auto 27px;
+    max-width:390px;
+    color:rgba(255,255,255,.72);
+    font-size:14px;
+    line-height:2;
+}
+
+.maintenance-home{
+    min-height:48px;
+    padding:0 23px;
+    border-radius:14px;
+    border:1px solid #10b981;
+    background:#10b981;
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+    transition:.25s;
+    box-shadow:0 12px 30px rgba(16,185,129,.2);
+}
+
+.maintenance-home:hover{
+    transform:translateY(-3px);
+    background:#0b6346;
+    border-color:#0b6346;
+}
+
+@media(max-width:600px){
+    .maintenance-overlay{
+        padding:90px 16px 75px;
+    }
+    .maintenance-card{
+        padding:30px 22px 25px;
+        border-radius:20px;
+    }
+}
+</style>
+
 </head>
-<body><div class="progress" id="progress"></div>
+<body>
+<div class="maintenance-overlay" role="alertdialog" aria-modal="true" aria-labelledby="maintenance-title">
+    <div class="maintenance-card">
+        <div class="maintenance-code">ERROR 404</div>
+        <h1 id="maintenance-title">این صفحه موقتاً در دسترس نیست</h1>
+        <p>این صفحه به دلیل آپدیت تا اطلاع ثانوی در دسترس نیست.<br>لطفاً بعداً سر بزنید.</p>
+        <a class="maintenance-home" href="https://mohammadmahdinaeiji.ir/">
+            بازگشت به خانه
+        </a>
+    </div>
+</div>
+<div class="progress" id="progress"></div>
 <header class="site-nav" id="siteNav">
 <div class="nav-inner">
 <a class="brand" href="https://mohammadmahdinaeiji.ir/" aria-label="Portfolio">
