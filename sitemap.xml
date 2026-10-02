@@ -1,59 +1,78 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-<loc>https://mohammadmahdinaeiji.ir/</loc>
-<priority>1.00</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/aboutme/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/blog/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/blog/inktober/</loc>
-<priority>0.70</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/aftabedozd/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/ai_i/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/book/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/caravan/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/duckland/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/hoveid/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/illustration/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/qajarcats/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/typography/</loc>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://mohammadmahdinaeiji.ir/yozi/</loc>
-<priority>0.80</priority>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/aboutme/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/blog/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/blog/inktober/</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/aftabedozd/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/ai_i/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/book/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/caravan/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/duckland/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/hoveid/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/illustration/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/qjarcats/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/typography/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/yozi/</loc>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
