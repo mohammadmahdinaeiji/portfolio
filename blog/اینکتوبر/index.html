@@ -842,6 +842,87 @@ body.light .contact-menu a:hover{
 .lang-en-text{direction:ltr;text-align:left}
 .article-content [data-en]{transition:none}
 .article-image figcaption span{color:inherit}
+
+/* Inktober interaction CTA */
+.inktober-cta{
+    width:min(760px,100%);
+    margin:42px auto 0;
+    padding:28px 30px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:
+        linear-gradient(135deg,rgba(16,185,129,.11),transparent 65%),
+        var(--surface);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .35s;
+}
+.inktober-cta:hover{
+    transform:translateY(-4px);
+    border-color:rgba(16,185,129,.45);
+    box-shadow:var(--shadow);
+}
+.inktober-cta-copy{min-width:0}
+.inktober-cta-kicker{
+    color:var(--accent);
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:7px;
+    letter-spacing:.04em;
+}
+.inktober-cta h3{
+    margin:0 0 7px;
+    font-size:20px;
+    font-weight:800;
+}
+.inktober-cta p{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+}
+.inktober-cta-btn{
+    flex:0 0 auto;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    min-height:46px;
+    padding:0 17px;
+    border-radius:13px;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    border:1px solid var(--accent);
+    transition:.25s;
+    white-space:nowrap;
+}
+.inktober-cta-btn:hover{
+    transform:translateY(-2px);
+    background:#0b6346;
+    border-color:#0b6346;
+}
+.inktober-cta-btn img{
+    width:18px;
+    height:18px;
+    filter:brightness(0) invert(1);
+}
+@media(max-width:600px){
+    .inktober-cta{
+        display:block;
+        padding:23px 20px;
+        border-radius:18px;
+    }
+    .inktober-cta-btn{
+        width:100%;
+        margin-top:18px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -1018,6 +1099,24 @@ body.light .contact-menu a:hover{
       <p data-fa="و شاید بعد از تمام شدن اکتبر، چیزی که بیشتر از طراحی‌هات برات بمونه این باشه که فهمیدی می‌تونی هر روز طراحی کنی، حتی وقتی ایده‌ی خاصی نداری." data-en="And maybe when October is over, what stays with you more than the drawings themselves is realizing that you can draw every day, even when you don't have a special idea.">و شاید بعد از تمام شدن اکتبر، چیزی که بیشتر از طراحی‌هات برات بمونه این باشه که فهمیدی می‌تونی هر روز طراحی کنی، حتی وقتی ایده‌ی خاصی نداری.</p>
 
     </article>
+
+    <div class="inktober-cta">
+      <div class="inktober-cta-copy">
+        <div class="inktober-cta-kicker" data-fa="اینکتوبر ۲۰۲۶" data-en="INKTOBER 2026">اینکتوبر ۲۰۲۶</div>
+        <h3 data-fa="منم امسال دارم اینکتوبر رو انجام می‌دم." data-en="I'm doing Inktober this year too.">منم امسال دارم اینکتوبر رو انجام می‌دم.</h3>
+        <p data-fa="اگه تو هم شرکت کردی، می‌تونیم با هم تعامل کنیم و طراحی‌های اینکتوبرم رو از طریق اینستاگرام دنبال کنی." data-en="If you're taking part too, let's connect. You can also follow my Inktober drawings on Instagram.">اگه تو هم شرکت کردی، می‌تونیم با هم تعامل کنیم و طراحی‌های اینکتوبرم رو از طریق اینستاگرام دنبال کنی.</p>
+      </div>
+      <a class="inktober-cta-btn"
+         href="https://www.instagram.com/mohammadmahdi_naeiji"
+         target="_blank"
+         rel="noopener"
+         data-fa="دیدن طراحی‌ها در اینستاگرام"
+         data-en="See my Inktober on Instagram">
+        <img src="/images/instagram.svg" alt="">
+        <span>دیدن طراحی‌ها در اینستاگرام</span>
+      </a>
+    </div>
+
 
     <div class="article-end"
      data-fa="این نوشته بخشی از بخش نوشتار وبلاگ است؛ جایی برای یادداشت‌هایی درباره طراحی، تصویرسازی و تجربه‌های بصری."
