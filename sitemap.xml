@@ -21,11 +21,6 @@
   </url>
 
   <url>
-    <loc>https://mohammadmahdinaeiji.ir/blog/inktober/</loc>
-    <priority>0.70</priority>
-  </url>
-
-  <url>
     <loc>https://mohammadmahdinaeiji.ir/aftabedozd/</loc>
     <priority>0.80</priority>
   </url>
@@ -73,6 +68,31 @@
   <url>
     <loc>https://mohammadmahdinaeiji.ir/yozi/</loc>
     <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/blog/%D8%A8%D8%B1%DA%AF%D8%B4%D8%AA%D9%86%20%D8%A8%D9%87%20%D9%85%D8%B3%DB%8C%D8%B1%20%D8%AE%D9%84%D8%A7%D9%82%DB%8C%D8%AA%20%D8%A8%D8%A7%20%DA%86%D8%A7%D9%84%D8%B4%20%D8%A7%DB%8C%D9%86%DA%A9%D8%AA%D9%88%D8%A8%D8%B1%20%DB%B2%DB%B0%DB%B2%DB%B6/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/blog/%DA%86%D8%B1%D8%A7%20%D9%87%D9%85%DB%8C%D8%B4%D9%87%20%D8%B9%D9%82%D8%A8%DB%8C%D9%85%D8%9F/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/blog/inktober/</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/quiz/</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadmahdinaeiji.ir/quiz/animal-charisma/</loc>
+    <priority>0.60</priority>
   </url>
 
 </urlset>
